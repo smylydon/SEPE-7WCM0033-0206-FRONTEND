@@ -1,15 +1,34 @@
-'use strict';
 
-angular.module('jwtfrontendApp')
-  .controller('NavbarCtrl', function ($scope, $location) {
-    $scope.menu = [{
+(function (app) {
+  'use strict';
+
+  app.module('jwtfrontendApp')
+    .controller('NavbarCtrl', navbarCtrl);
+
+  /*@ngInject*/
+  function navbarCtrl ($scope, $location, $state, $stateParams) {
+    var vm = this;
+
+    vm.menu = [{
       'title': 'Home',
-      'link': '/'
+      'state': 'home'
+    },{
+      'title': 'About Us',
+      'state': 'about'
+    },{
+      'title': 'Legal',
+      'state': 'legal'
+    },
+    {
+      'title': 'Contact Us',
+      'state': 'contact'
     }];
 
-    $scope.isCollapsed = true;
+    vm.isCollapsed = true;
 
-    $scope.isActive = function(route) {
-      return route === $location.path();
+    vm.isActive = function (route) {
+      return route === $state.current.name;
     };
-  });
+  }
+
+})(angular);

@@ -1,9 +1,9 @@
-'use strict';
-/*
+/*'use strict';
+
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('jwtfrontendApp'));
+  beforeEach(module('processFunnelApp'));
 
   var MainCtrl,
       scope,
@@ -25,4 +25,5 @@ describe('Controller: MainCtrl', function () {
     $httpBackend.flush();
     expect(scope.awesomeThings.length).toBe(4);
   });
-});*/
+});
+*/
