@@ -6,7 +6,7 @@
 	  .controller('HomeCtrl', homeCtrl);
 
 	 /*@ngInject*/
-	function homeCtrl ($scope) {
+	function homeCtrl ($scope, Restangular) {
 		var vm = this;
 /*
 		var data = {

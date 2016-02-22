@@ -10,18 +10,11 @@
     var vm = this;
 
     vm.menu = [{
-      'title': 'Home',
+      'title': 'Buy Car',
       'state': 'home'
     },{
-      'title': 'About Us',
-      'state': 'about'
-    },{
-      'title': 'Legal',
-      'state': 'legal'
-    },
-    {
-      'title': 'Contact Us',
-      'state': 'contact'
+      'title': 'Service & Repair',
+      'state': 'maintain'
     }];
 
     vm.isCollapsed = true;
