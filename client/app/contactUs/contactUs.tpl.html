@@ -1,11 +1,11 @@
-
 <header class="hero-unit">
   <div class="container">
     <h3>Contact Us</h3>
   </div>
 </header>
-<br /><br />
+
 <div class="container">
+  <br /><br />
   <div class="row">
     <div class="col-lg-4">
         <p>By Mail</p>
@@ -24,21 +24,30 @@
         <form>
             <div class="form-group">
                 <label for="Name">Name</label>
-                <input id="Name" type="text" class="form-control">
+                <input id="Name" type="text" class="form-control"
+                ng-minlength="2" ng-model="contactUsCtrl.customerName"
+                placeholder="J. Smith" ng-required="true">
             </div>
             <div class="form-group">
                 <label for="emailAddress">Email Address</label>
-                <input id="emailAddress" type="text" class="form-control">
+                <input id="emailAddress" ng-email type="text"
+                 ng-model="contactUsCtrl.emailAddress"
+                class="form-control" placeholder="jsmith@abc.com" ng-required="true">
             </div>
             <div class="form-group">
                 <label for="subject">Subject</label>
-                <input id="subject" type="text" class="form-control">
+                <input id="subject" type="text" class="form-control" placeholder="I wanna Maserati"
+                ng-minlength="2" ng-model="contactUsCtrl.subject" ng-required="true">
             </div>
             <div class="form-group">
                 <label for="subject">Message</label>
-                <textarea id="message" class="form-control"></textarea>
+                <textarea id="message" class="form-control" placeholder="Can I test that Maserati."
+                ng-minlength="2" ng-model="contactUsCtrl.message" ng-required="true"></textarea>
             </div>
-            <button class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <button class="btn btn-primary" ng-click="contactUsCtrl.submit($event)">Submit</button>
+            </div>
+
         </form>
 
     </div>
