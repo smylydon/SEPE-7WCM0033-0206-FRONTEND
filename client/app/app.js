@@ -26,9 +26,3 @@ angular.module('jwtfrontendApp', [
   .config(function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://localhost:8000/api');
   })
-  /*@ngInject*/
-  .run(function(Restangular, localStorageService) {
-    Restangular.setDefaultHeaders({
-      Authorization: 'Bearer ' + localStorageService.get('token')
-    });
-  });
