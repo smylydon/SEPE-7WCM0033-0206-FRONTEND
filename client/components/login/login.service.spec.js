@@ -1,14 +1,16 @@
-'use strict';
 /*
-describe('Controller: MainCtrl', function() {
+'use strict';
 
+describe('LoginService', function() {
+  var LoginService = null;
   // load the controller's module
-  beforeEach(module('services.login'));
-
-  beforeEach(inject(function(_$httpBackend_, _Login_) {
-    $httpBackend = _$httpBackend_;
-    Login = _Login_;
-  }));
+  beforeEach(function() {
+    module('services.login');
+    inject(function(_$httpBackend_, _LoginService_) {
+      $httpBackend = _$httpBackend_;
+      LoginService = _LoginService_;
+    });
+  });
 
   afterEach(function() {
     $httpBackend.verifyNoOutstandingExpectation();
@@ -22,7 +24,7 @@ describe('Controller: MainCtrl', function() {
     $httpBackend.expectPost('/api/login', '{email:test@test.com, password:password}')
       .respond(200);
 
-    Login.post({
+    LoginService.login({
       email: 'test@test',
       password: 'password'
     });
