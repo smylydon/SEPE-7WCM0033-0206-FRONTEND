@@ -1,26 +1,29 @@
-/*
 'use strict';
 
 describe('LoginService', function() {
   var LoginService = null;
+  var passpromise = false;
+  var Restangular = null;
+  var localStorageService = null;
+  var Login,
+    $httpBackend;
+
   // load the controller's module
-  beforeEach(function() {
-    module('services.login');
-    inject(function(_$httpBackend_, _LoginService_) {
-      $httpBackend = _$httpBackend_;
-      LoginService = _LoginService_;
-    });
-  });
+  beforeEach(module('services.login'));
+
+  beforeEach(inject(function($rootScope, _$httpBackend_, _LoginService_ ) {
+    $httpBackend = _$httpBackend_;
+    LoginService = _LoginService_;
+  }));
 
   afterEach(function() {
     $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  var Login,
-    $httpBackend;
 
-  it('should login using email and password', function() {
+
+  it('should be possible login using email and password', function() {
     $httpBackend.expectPost('/api/login', '{email:test@test.com, password:password}')
       .respond(200);
 
@@ -32,4 +35,3 @@ describe('LoginService', function() {
     $httpBackend.flush();
   });
 });
-*/

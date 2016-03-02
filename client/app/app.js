@@ -9,6 +9,7 @@ angular.module('jwtfrontendApp', [
     'ui.bootstrap',
     'LocalStorageModule',
     'restangular',
+    'services.cars',
     'services.login'
   ])
   /*@ngInject*/

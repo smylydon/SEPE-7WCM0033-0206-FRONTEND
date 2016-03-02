@@ -1,0 +1,19 @@
+<header class="hero-unit">
+  <div class="container">
+    <h3>List Cars</h3>
+  </div>
+</header>
+
+<div class="container">
+  <br /><br />
+  <div class="row">
+      <div class="col-lg-2">
+
+      </div>
+    <div class="col-lg-10">
+        <div style="border: 1px solid #a0a0a0; margin:5px; padding: 5px" ng-repeat="car in listCarsCtrl.cars">
+            {{car.model}}
+        </div>
+    </div>
+  </div>
+</div>
