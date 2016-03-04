@@ -1,6 +1,6 @@
 'use strict';
 
-describe('LoginService', function() {
+xdescribe('carsService', function() {
   var LoginService = null;
   var passpromise = false;
   var Restangular = null;
@@ -11,7 +11,7 @@ describe('LoginService', function() {
   // load the controller's module
   beforeEach(module('services.login'));
 
-  beforeEach(inject(function($rootScope, _$httpBackend_, _LoginService_ ) {
+  beforeEach(inject(function($rootScope, _$httpBackend_, _LoginService_) {
     $httpBackend = _$httpBackend_;
     LoginService = _LoginService_;
   }));

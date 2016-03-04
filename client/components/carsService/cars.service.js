@@ -30,7 +30,7 @@
       isBusy = true;
       carsPromise = $q.defer();
       callback();
-      return carsPromise.promise;;
+      return carsPromise.promise;
     }
 
     function getCars(cars) {

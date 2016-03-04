@@ -33,7 +33,7 @@
                 logout();
                 loginPromise.reject('login failed');
             });
-            return loginPromise.promise;;
+            return loginPromise.promise;
         }
 
         function logout() {
@@ -46,7 +46,7 @@
             Restangular.setDefaultHeaders({
                 Authorization: 'Bearer ' + localStorageService.get('token')
             });
-        };
+        }
 
         return external;
     }

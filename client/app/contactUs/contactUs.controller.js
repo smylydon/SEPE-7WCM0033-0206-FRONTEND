@@ -7,7 +7,7 @@
 
 
 	 /*@ngInject*/
-	function ContactUsCtrl ($scope, Restangular) {
+	function ContactUsCtrl (Restangular) {
 		var vm = this;
 		vm.customerName = '';
 		vm.message = '';
@@ -18,10 +18,6 @@
 			//$event.stopProgration();
 			console.log('submit buttton clicked');
 			var message ={};
-
-			if (vm.customerName.length > 2){
-
-			}
 
 			message.name = vm.customerName;
 			message.message = vm.message;
@@ -34,7 +30,7 @@
 			}).catch(function(error) {
 			  console.log('it failed:', error);
 		  });
-		}
+		};
 	}
 
 

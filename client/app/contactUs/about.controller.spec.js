@@ -1,29 +1,23 @@
-/*'use strict';
-
-describe('Controller: MainCtrl', function () {
+'use strict';
+/*
+describe('Controller: ContactUsCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('processFunnelApp'));
+  beforeEach(module('jwtfrontendApp'));
 
-  var MainCtrl,
-      scope,
-      $httpBackend;
+  var ContactUsCtrl,
+      scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
-    $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('/api/things')
-      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
-
+  beforeEach(inject(function ($rootScope, $controller) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    ContactUsCtrl = $controller('ContactUsCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of things to the scope', function () {
-    $httpBackend.flush();
-    expect(scope.awesomeThings.length).toBe(4);
+  it('should be fine', function () {
+    expect(4).toBe(4);
   });
 });
 */

@@ -10,7 +10,11 @@
       <div class="col-lg-2">
 
       </div>
-    <div class="col-lg-10">
+      <div class="col-lg-10" ng-if="listCarsCtrl.showList">
+        <h2>No vehicles found</h2>
+        <p>There no vehicles that match your search criteria.</p>
+      </div>
+    <div class="col-lg-10" ng-if="!listCarsCtrl.showList">
         <div style="border: 1px solid #a0a0a0; margin:5px; padding: 5px" ng-repeat="car in listCarsCtrl.cars">
             {{car.model}}
         </div>
