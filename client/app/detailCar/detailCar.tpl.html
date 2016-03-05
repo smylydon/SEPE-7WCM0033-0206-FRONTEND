@@ -1,0 +1,22 @@
+<header class="hero-unit">
+  <div class="container">
+    <h3>Car Details</h3>
+  </div>
+</header>
+
+<div class="container">
+  <br /><br />
+  <div class="row">
+      <div class="col-lg-2">
+
+      </div>
+      <div class="col-lg-10" ng-if="!detailCarCtrl.showCar">
+        <h2>No vehicles found</h2>
+        <p>There no vehicle that matches your search criteria.</p>
+      </div>
+    <div class="col-lg-10" ng-if="detailCarCtrl.showCar">
+      {{detailCarCtrl.car.model}}
+      {{detailCarCtrl.car.description}}
+    </div>
+  </div>
+</div>

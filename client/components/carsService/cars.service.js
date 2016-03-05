@@ -42,7 +42,7 @@
 
     function getACar(car_id) {
       var callback = function() {
-        Restangular.one('cars').get().then(resolve, reject);
+        Restangular.one('cars',car_id).get().then(resolve, reject);
       };
       return makeCall(callback);
     }

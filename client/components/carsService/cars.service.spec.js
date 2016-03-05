@@ -21,8 +21,6 @@ xdescribe('carsService', function() {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-
-
   it('should be possible login using email and password', function() {
     $httpBackend.expectPost('/api/login', '{email:test@test.com, password:password}')
       .respond(200);

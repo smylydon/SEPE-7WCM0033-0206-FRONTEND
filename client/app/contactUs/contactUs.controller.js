@@ -5,7 +5,6 @@
 	app.module('jwtfrontendApp')
 	  .controller('ContactUsCtrl', ContactUsCtrl);
 
-
 	 /*@ngInject*/
 	function ContactUsCtrl (CommentService) {
 		var vm = this;

@@ -10,14 +10,24 @@
       <div class="col-lg-2">
 
       </div>
-      <div class="col-lg-10" ng-if="listCarsCtrl.showList">
+      <div class="col-lg-10" ng-if="!listCarsCtrl.showList">
         <h2>No vehicles found</h2>
         <p>There no vehicles that match your search criteria.</p>
       </div>
-    <div class="col-lg-10" ng-if="!listCarsCtrl.showList">
-        <div style="border: 1px solid #a0a0a0; margin:5px; padding: 5px" ng-repeat="car in listCarsCtrl.cars">
-            {{car.model}}
+    <div class="col-lg-10" ng-if="listCarsCtrl.showList">
+
+        <div class="row car-row" ng-repeat="car in listCarsCtrl.cars">
+          <div class="col-lg-2 car-list-image">
+            <a ui-sref="detailCar({car_id:car.id})">
+              <img ng-src="./assets/images/vehicleLarge.jpg">
+            </a>
+          </div>
+          <div class="col-lg-8">
+            <a ui-sref="detailCar({car_id:car.id})"><h4>{{car.model}}</h4></a>
+            {{car.id}}
+          </div>
         </div>
+
     </div>
   </div>
 </div>
