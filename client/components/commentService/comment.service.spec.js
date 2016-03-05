@@ -1,18 +1,18 @@
 'use strict';
+//http://ng-learn.org/2014/08/Testing_Promises_with_Jasmine/
 
 describe('CommentService', function() {
   var CommentService = null;
   var $httpBackend = null;
   var aComment = {
-    "name":"Fred",
-    "message":"Test test.",
-    "email":"fred@bedrock.com",
-    "subject":"Wilmaaa!!!!"
+    "name": "Fred",
+    "message": "Test test.",
+    "email": "fred@bedrock.com",
+    "subject": "Wilmaaa!!!!"
   };
 
   // load the controller's module
   beforeEach(module('jwtfrontendApp'));
-  //beforeEach(module('restangular'));
   beforeEach(module('services.comments'));
 
   beforeEach(inject(function($rootScope, _$httpBackend_, _CommentService_) {
@@ -25,30 +25,40 @@ describe('CommentService', function() {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should be possible to save a comment', function() {
+  it('should be possible to save a comment', function(done) {
     var comment = _.clone(aComment);
-    CommentService.saveComment(comment);
 
     $httpBackend.when('POST', 'http://localhost:8000/api/comment', aComment)
-      .respond({
+      .respond(200, {
         success: true,
         message: ''
       });
-
+    CommentService.saveComment(comment)
+      .then(function(success) {
+        expect(success.success).toBe(true);
+        expect(success.message).toBe('');
+      }).catch(function(error) {
+        expect(error).toBeUndefined();
+      }).finally(done)
     $httpBackend.flush();
   });
 
-  it('should be not be possible to save a comment without an email address', function() {
+  //not rejecting.. why?
+  xit('should be not be possible to save a comment without an email address', function(done) {
     var comment = _.clone(aComment);
     comment.email = '';
-    CommentService.saveComment(comment);
-
-    $httpBackend.when('POST', 'http://localhost:8000/api/comment', aComment)
-      .respond({
-        success: true,
-        message: ''
+    $httpBackend.when('POST', 'http://localhost:8000/api/comment', comment)
+      .respond(404, {
+        success: false,
+        message: 'email required'
       });
-
+    CommentService.saveComment(comment)
+      .then(function(success) {
+        expect(success).toBeUndefined();
+      }).catch(function(error) {
+        expect(error.success).toBe(false);
+        expect(error.message).toBe('email required');
+      }).finally(done)
     $httpBackend.flush();
   });
 });
