@@ -5,7 +5,7 @@ describe('LoginService', function() {
   var $httpBackend = null;
 
   // load the controller's module
-  //beforeEach(module('jwtfrontendApp'));
+  beforeEach(module('jwtfrontendApp'));
   //beforeEach(module('restangular'));
   beforeEach(module('services.login'));
 
@@ -20,14 +20,19 @@ describe('LoginService', function() {
   });
 
   it('should be possible login using email and password', function() {
-    $httpBackend.expectPost('/api/login', '{email:test@test.com, password:password}')
-      .respond(200);
-
     LoginService.login({
-      email: 'test@test',
-      password: 'password'
+      "email": "test@test.com",
+      "password": "password"
     });
 
+    $httpBackend.when('POST', 'http://localhost:8000/api/login', '{"email":"test@test.com","password":"password"}')
+      .respond({
+        success: true,
+        message: '',
+        token: 123
+      });
+
     $httpBackend.flush();
+    expect(LoginService.isLoggedIn()).toBe(true);
   });
 });

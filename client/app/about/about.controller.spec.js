@@ -1,11 +1,11 @@
-/*'use strict';
-
-describe('Controller: MainCtrl', function () {
+'use strict';
+/*
+describe('Controller: AboutCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('processFunnelApp'));
+  beforeEach(module('jwtfrontendApp'));
 
-  var MainCtrl,
+  var AboutCtrl,
       scope,
       $httpBackend;
 
@@ -16,7 +16,7 @@ describe('Controller: MainCtrl', function () {
       .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    AboutCtrl = $controller('AboutCtrl', {
       $scope: scope
     });
   }));
