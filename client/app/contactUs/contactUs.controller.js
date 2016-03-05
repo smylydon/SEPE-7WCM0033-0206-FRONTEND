@@ -7,7 +7,7 @@
 
 
 	 /*@ngInject*/
-	function ContactUsCtrl (Restangular) {
+	function ContactUsCtrl (CommentService) {
 		var vm = this;
 		vm.customerName = '';
 		vm.message = '';
@@ -15,7 +15,6 @@
 		vm.subject = '';
 
 		vm.submit = function($event) {
-			//$event.stopProgration();
 			console.log('submit buttton clicked');
 			var message ={};
 
@@ -24,12 +23,12 @@
 			message.email = vm.emailAddress;
 			message.subject = vm.subject;
 
-			Restangular.one('comment')
-				.customPOST(message).then(function(success) {
+			CommentService.saveComment(message)
+				.then(function(success) {
 			  console.log('it worked:', success);
-			}).catch(function(error) {
+				}).catch(function(error) {
 			  console.log('it failed:', error);
-		  });
+				});
 		};
 	}
 

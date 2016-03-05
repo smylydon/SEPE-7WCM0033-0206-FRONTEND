@@ -10,7 +10,8 @@ angular.module('jwtfrontendApp', [
     'LocalStorageModule',
     'restangular',
     'services.cars',
-    'services.login'
+    'services.login',
+    'services.comments'
   ])
   /*@ngInject*/
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
