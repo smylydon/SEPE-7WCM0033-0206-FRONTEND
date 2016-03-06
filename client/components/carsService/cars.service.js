@@ -40,9 +40,9 @@
       return makeCall(callback);
     }
 
-    function getACar(car_id) {
+    function getACar(carId) {
       var callback = function() {
-        Restangular.one('cars',car_id).get().then(resolve, reject);
+        Restangular.one('cars',carId).get().then(resolve, reject);
       };
       return makeCall(callback);
     }

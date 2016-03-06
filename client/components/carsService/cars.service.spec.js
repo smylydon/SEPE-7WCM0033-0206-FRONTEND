@@ -1,19 +1,16 @@
 'use strict';
 
-xdescribe('carsService', function() {
-  var LoginService = null;
-  var passpromise = false;
-  var Restangular = null;
-  var localStorageService = null;
-  var Login,
-    $httpBackend;
+describe('CarsService', function() {
+  var CarsService = null;
+  var $httpBackend = null;
 
   // load the controller's module
-  beforeEach(module('services.login'));
+  beforeEach(module('jwtfrontendApp'));
+  beforeEach(module('services.cars'));
 
-  beforeEach(inject(function($rootScope, _$httpBackend_, _LoginService_) {
+  beforeEach(inject(function($rootScope, _$httpBackend_, _CarsService_) {
     $httpBackend = _$httpBackend_;
-    LoginService = _LoginService_;
+    CarsService = _CarsService_;
   }));
 
   afterEach(function() {
@@ -21,15 +18,21 @@ xdescribe('carsService', function() {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should be possible login using email and password', function() {
-    $httpBackend.expectPost('/api/login', '{email:test@test.com, password:password}')
-      .respond(200);
+  it('should be possible to get one car', function(done) {
 
-    LoginService.login({
-      email: 'test@test',
-      password: 'password'
-    });
+    $httpBackend.when('GET', 'http://localhost:8000/api/cars/1')
+      .respond(200, {
+        success: true,
+        message: ''
+      });
 
+    CarsService.getACar(1)
+      .then(function(success) {
+        expect(success.success).toBe(true);
+        expect(success.message).toBe('');
+      }).catch(function(error) {
+        expect(error).toBeUndefined();
+      }).finally(done)
     $httpBackend.flush();
   });
 });
