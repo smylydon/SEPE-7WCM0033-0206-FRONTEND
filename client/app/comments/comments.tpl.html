@@ -16,15 +16,15 @@
       </div>
     <div class="col-lg-10" ng-if="commentsCtrl.showList">
 
-        <div class="row car-row" ng-repeat="comment in commentCtrl.comments">
+        <div class="row car-row" ng-repeat="comment in commentsCtrl.comments">
           <div class="col-lg-2 car-list-image">
-            <a ui-sref="viewComment({comment_id:comment.id})">
+            <a>
 
             </a>
-            {{comment}}
+            {{comment.message}}
           </div>
           <div class="col-lg-8">
-            <a ui-sref="detailCar({car_id:car.id})"><h4>test</h4></a>
+            <a ><h4>test</h4></a>
             {{comment.id}}
           </div>
         </div>

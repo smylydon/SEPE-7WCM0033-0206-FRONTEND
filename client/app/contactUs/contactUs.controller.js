@@ -6,7 +6,7 @@
 	  .controller('ContactUsCtrl', ContactUsCtrl);
 
 	 /*@ngInject*/
-	function ContactUsCtrl (CommentService) {
+	function ContactUsCtrl (CommentsService) {
 		var vm = this;
 		vm.customerName = '';
 		vm.message = '';
@@ -22,7 +22,7 @@
 			message.email = vm.emailAddress;
 			message.subject = vm.subject;
 
-			CommentService.saveComment(message)
+			CommentsService.saveComment(message)
 				.then(function(success) {
 			  console.log('it worked:', success);
 				}).catch(function(error) {

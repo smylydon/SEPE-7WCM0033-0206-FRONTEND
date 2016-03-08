@@ -1,8 +1,8 @@
 'use strict';
 //http://ng-learn.org/2014/08/Testing_Promises_with_Jasmine/
 
-describe('CommentService', function() {
-  var CommentService = null;
+describe('CommentsService', function() {
+  var CommentsService = null;
   var $httpBackend = null;
   var aComment = {
     "name": "Fred",
@@ -15,9 +15,9 @@ describe('CommentService', function() {
   beforeEach(module('jwtfrontendApp'));
   beforeEach(module('services.comments'));
 
-  beforeEach(inject(function($rootScope, _$httpBackend_, _CommentService_) {
+  beforeEach(inject(function($rootScope, _$httpBackend_, _CommentsService_) {
     $httpBackend = _$httpBackend_;
-    CommentService = _CommentService_;
+    CommentsService = _CommentService_;
   }));
 
   afterEach(function() {
@@ -33,7 +33,7 @@ describe('CommentService', function() {
         success: true,
         message: ''
       });
-    CommentService.saveComment(comment)
+    CommentsService.saveComment(comment)
       .then(function(success) {
         expect(success.success).toBe(true);
         expect(success.message).toBe('');
@@ -52,7 +52,7 @@ describe('CommentService', function() {
         success: false,
         message: 'email required'
       });
-    CommentService.saveComment(comment)
+    CommentsService.saveComment(comment)
       .then(function(success) {
         expect(success).toBeUndefined();
       }).catch(function(error) {

@@ -14,7 +14,7 @@ angular.module('jwtfrontendApp')
           'mainView': {
             templateUrl: 'app/comments/comments.tpl.html',
             controller: 'CommentsCtrl',
-            controllerAs: 'CommentsCtrl'
+            controllerAs: 'commentsCtrl'
           },
           'footerView': {
             templateUrl: 'components/footer/footer.tpl.html',

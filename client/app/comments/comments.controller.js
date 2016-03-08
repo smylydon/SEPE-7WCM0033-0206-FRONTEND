@@ -14,7 +14,7 @@
         CommentsService.getComments().then(function (comments) {
             vm.comments = comments;
             vm.showList = false;
-            if (vm.cars.length > 0) {
+            if (vm.comments.length > 0) {
               vm.showList = true;
             }
             console.log('comments:', comments);
@@ -24,7 +24,7 @@
         });
     }
 
-    //getCars();
+    getComments();
   }
 
 })(angular);
