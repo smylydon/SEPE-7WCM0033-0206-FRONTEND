@@ -2,10 +2,10 @@
   'use strict';
 
   app.module('jwtfrontendApp')
-    .controller('DetailCarCtrl', DetailCarCtrl);
+    .controller('CarCtrl', CarCtrl);
 
   /*@ngInject*/
-  function DetailCarCtrl($scope, $state, $stateParams, CarsService) {
+  function CarCtrl($scope, $state, $stateParams, CarsService) {
     var vm = this;
     vm.showCar = false;
     vm.car = null;
@@ -24,7 +24,7 @@
         });
     }
 
-    getCar($stateParams.car_id);
+    getCar($stateParams.car_id); //jshint ignore:line
   }
 
 })(angular);

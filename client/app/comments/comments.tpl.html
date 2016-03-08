@@ -1,0 +1,34 @@
+<header class="hero-unit">
+  <div class="container">
+    <h3>Comments</h3>
+  </div>
+</header>
+
+<div class="container">
+  <br /><br />
+  <div class="row">
+      <div class="col-lg-2">
+
+      </div>
+      <div class="col-lg-10" ng-if="!commentsCtrl.showList">
+        <h2>No comments found</h2>
+        <p>There where no comments returned.</p>
+      </div>
+    <div class="col-lg-10" ng-if="commentsCtrl.showList">
+
+        <div class="row car-row" ng-repeat="comment in commentCtrl.comments">
+          <div class="col-lg-2 car-list-image">
+            <a ui-sref="viewComment({comment_id:comment.id})">
+
+            </a>
+            {{comment}}
+          </div>
+          <div class="col-lg-8">
+            <a ui-sref="detailCar({car_id:car.id})"><h4>test</h4></a>
+            {{comment.id}}
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>

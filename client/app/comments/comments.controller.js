@@ -2,30 +2,29 @@
   'use strict';
 
   app.module('jwtfrontendApp')
-    .controller('ListCarsCtrl', ListCarsCtrl);
+    .controller('CommentsCtrl', CommentsCtrl);
 
-  /*@ngInject*/
-  function ListCarsCtrl($scope, $state, CarsService) {
+  function CommentsCtrl($scope, $state, CommentsService) {
     var vm = this;
 
-    vm.cars = [];
+    vm.comments = [];
     vm.showList = false;
 
-    function getCars(){
-        CarsService.getCars().then(function (cars) {
-            vm.cars = cars;
+    function getComments(){
+        CommentsService.getComments().then(function (comments) {
+            vm.comments = comments;
             vm.showList = false;
             if (vm.cars.length > 0) {
               vm.showList = true;
             }
-            console.log('cars:', cars);
+            console.log('comments:', comments);
         }, function (error) {
           vm.showList = false;
             console.log(error);
         });
     }
 
-    getCars();
+    //getCars();
   }
 
 })(angular);

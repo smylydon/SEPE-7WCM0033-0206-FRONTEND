@@ -11,7 +11,6 @@
     vm.password = '';
 
     vm.submit = function($event) {
-      //$event.stopProgration();
       console.log('submit buttton clicked');
       var message = {};
 

@@ -1,6 +1,6 @@
 <header class="hero-unit">
   <div class="container">
-    <h3>List Cars</h3>
+    <h3>Cars</h3>
   </div>
 </header>
 
@@ -10,20 +10,20 @@
       <div class="col-lg-2">
 
       </div>
-      <div class="col-lg-10" ng-if="!listCarsCtrl.showList">
+      <div class="col-lg-10" ng-if="!carsCtrl.showList">
         <h2>No vehicles found</h2>
         <p>There no vehicles that match your search criteria.</p>
       </div>
-    <div class="col-lg-10" ng-if="listCarsCtrl.showList">
+    <div class="col-lg-10" ng-if="carsCtrl.showList">
 
-        <div class="row car-row" ng-repeat="car in listCarsCtrl.cars">
+        <div class="row car-row" ng-repeat="car in carsCtrl.cars">
           <div class="col-lg-2 car-list-image">
-            <a ui-sref="detailCar({car_id:car.id})">
+            <a ui-sref="car({car_id:car.id})">
               <img ng-src="./assets/images/vehicleLarge.jpg">
             </a>
           </div>
           <div class="col-lg-8">
-            <a ui-sref="detailCar({car_id:car.id})"><h4>{{car.model}}</h4></a>
+            <a ui-sref="car({car_id:car.id})"><h4>{{car.model}}</h4></a>
             {{car.id}}
           </div>
         </div>

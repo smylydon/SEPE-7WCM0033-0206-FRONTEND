@@ -3,8 +3,8 @@
 angular.module('jwtfrontendApp')
   .config(function($stateProvider) {
     $stateProvider
-      .state('detailCar', {
-        url: '/detail-car/:car_id',
+      .state('cars', {
+        url: '/cars/:car_id',
         views: {
           'menuView': {
             templateUrl: 'components/navbar/navbar.tpl.html',
@@ -12,9 +12,9 @@ angular.module('jwtfrontendApp')
             controllerAs: 'navbarCtrl'
           },
           'mainView': {
-            templateUrl: 'app/detailCar/detailCar.tpl.html',
-            controller: 'DetailCarCtrl',
-            controllerAs: 'detailCarCtrl'
+            templateUrl: 'app/cars/cars.tpl.html',
+            controller: 'CarsCtrl',
+            controllerAs: 'carsCtrl'
           },
           'footerView': {
             templateUrl: 'components/footer/footer.tpl.html',
