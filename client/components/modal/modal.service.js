@@ -1,6 +1,8 @@
-'use strict';
 
-angular.module('jwtfrontendApp')
+
+(function (app) {
+  'use strict';
+  app.module('jwtfrontendApp')
   .factory('Modal', function($rootScope, $modal) {
       /**
        * Opens a modal
@@ -75,3 +77,4 @@ angular.module('jwtfrontendApp')
           }
       };
   });
+})(angular);

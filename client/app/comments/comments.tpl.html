@@ -16,17 +16,17 @@
       </div>
     <div class="col-lg-10" ng-if="commentsCtrl.showList">
 
-        <div class="row car-row" ng-repeat="comment in commentsCtrl.comments">
-          <div class="col-lg-2 car-list-image">
-            <a>
-
-            </a>
-            {{comment.message}}
-          </div>
-          <div class="col-lg-8">
-            <a ><h4>test</h4></a>
-            {{comment.id}}
-          </div>
+        <div class="row comment-row"
+        ng-repeat="comment in commentsCtrl.comments"
+        ng-click="commentsCtrl.commentPicked($event, comment.id)">
+        <a>
+          <ul>
+            <li><h5>{{comment.name}}</h5></lid>
+            <li><h6>{{comment.email}}</h5></lid>
+            <li><h6>{{comment.subject}}</h6></li>
+            <li><h5>{{comment.message}}<h5></li>
+          </ul>
+        </a>
         </div>
 
     </div>
