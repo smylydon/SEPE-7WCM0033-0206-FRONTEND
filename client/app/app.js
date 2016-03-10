@@ -29,4 +29,14 @@ angular.module('jwtfrontendApp', [
   /*@ngInject*/
   .config(function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://localhost:8000/api');
+  })
+    /*@ngInject*/
+  .run(function ($rootScope, $state, LoginService){
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+      if (toState.authenticate && !LoginService.isLoggedIn()) {
+        $state.go('login');
+        event.preventDefault();
+      }
+    });
+
   });

@@ -20,7 +20,8 @@ angular.module('jwtfrontendApp')
             templateUrl: 'components/footer/footer.tpl.html',
             controller: 'FooterCtrl',
             controllerAs: 'footerCtrl'
-          },
-        }
+          }
+        },
+        authenticate: true
       });
   });
