@@ -44,7 +44,7 @@
                 Authorization: 'Bearer ' + localStorageService.get('token')
             });
         }
-        
+
         return external;
     }
 })(angular);
