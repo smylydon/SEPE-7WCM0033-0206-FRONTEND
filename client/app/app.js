@@ -44,4 +44,4 @@ angular.module('jwtfrontendApp', [
     Restangular.setDefaultHeaders({
       Authorization: 'Bearer ' + localStorageService.get('token')
     });
-  })
+  });

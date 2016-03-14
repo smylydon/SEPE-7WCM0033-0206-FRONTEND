@@ -17,7 +17,9 @@ describe('CommentsService', function() {
 
   beforeEach(inject(function($rootScope, _$httpBackend_, _CommentsService_) {
     $httpBackend = _$httpBackend_;
-    CommentsService = _CommentService_;
+    CommentsService = _CommentsService_;
+    $httpBackend.whenGET(/components.*/).respond(200, '');
+    $httpBackend.whenGET(/app.*/).respond(200, '');
   }));
 
   afterEach(function() {
@@ -28,7 +30,7 @@ describe('CommentsService', function() {
   it('should be possible to save a comment', function(done) {
     var comment = _.clone(aComment);
 
-    $httpBackend.when('POST', 'http://localhost:8000/api/comment', aComment)
+    $httpBackend.when('POST', 'http://localhost:8000/api/comments', aComment)
       .respond(200, {
         success: true,
         message: ''
@@ -43,11 +45,10 @@ describe('CommentsService', function() {
     $httpBackend.flush();
   });
 
-  //not rejecting.. why?
-  xit('should be not be possible to save a comment without an email address', function(done) {
+  it('should be not be possible to save a comment without an email address', function(done) {
     var comment = _.clone(aComment);
     comment.email = '';
-    $httpBackend.when('POST', 'http://localhost:8000/api/comment', comment)
+    $httpBackend.when('POST', 'http://localhost:8000/api/comments', comment)
       .respond(404, {
         success: false,
         message: 'email required'

@@ -12,6 +12,8 @@ describe('LoginService', function() {
   beforeEach(inject(function($rootScope, _$httpBackend_, _LoginService_) {
     $httpBackend = _$httpBackend_;
     LoginService = _LoginService_;
+    $httpBackend.whenGET(/components.*/).respond(200, '');
+    $httpBackend.whenGET(/app.*/).respond(200, '');
   }));
 
   afterEach(function() {

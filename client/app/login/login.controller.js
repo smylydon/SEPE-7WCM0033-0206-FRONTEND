@@ -11,12 +11,11 @@
     vm.password = '';
 
     vm.submit = function($event) {
-      console.log('submit buttton clicked');
       var message = {};
 
       message.email = vm.emailAddress;
       message.password = vm.password;
-
+      console.log('submit buttton clicked:', message);
       LoginService.login(message)
         .then(function(success) {
           $state.go('home');
