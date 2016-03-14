@@ -12,7 +12,8 @@ angular.module('jwtfrontendApp', [
     'services.cars',
     'services.login',
     'services.comments',
-    'services.commentsModal'
+    'services.commentsModal',
+    'services.upload'
   ])
   /*@ngInject*/
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {

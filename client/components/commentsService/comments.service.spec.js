@@ -57,8 +57,8 @@ describe('CommentsService', function() {
       .then(function(success) {
         expect(success).toBeUndefined();
       }).catch(function(error) {
-        expect(error.success).toBe(false);
-        expect(error.message).toBe('email required');
+        expect(error.data.success).toBe(false);
+        expect(error.data.message).toBe('email required');
       }).finally(done)
     $httpBackend.flush();
   });
