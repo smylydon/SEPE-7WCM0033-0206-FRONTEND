@@ -22,12 +22,17 @@
               <img ng-src="./assets/images/vehicleLarge.jpg">
             </a>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-6">
             <a ui-sref="car({car_id:car.id})"><h4>{{car.model}}</h4></a>
             {{car.id}}
           </div>
+          <div class="col-lg-2" style="margin: 10px">
+              <button class="btn btn-primary" ng-click="carsCtrl.submit($event)">Contact Us</button>
+              <input type="checkbox" >add to compare
+          </div>
         </div>
 
+        <jwt-pagination></jwt-pagination>
     </div>
   </div>
 </div>

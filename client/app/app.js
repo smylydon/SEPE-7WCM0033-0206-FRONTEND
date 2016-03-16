@@ -10,6 +10,7 @@ angular.module('jwtfrontendApp', [
 		'ng-acl',
 		'LocalStorageModule',
 		'restangular',
+	//	'jwtPagination',
 		'services.cars',
 		'services.login',
 		'services.comments',
@@ -40,9 +41,18 @@ angular.module('jwtfrontendApp', [
 		AclService.addRole('manager', 'salesperson');
 		AclService.addRole('administrator', 'manager');
 
-		AclService.addResource('Comments');
 
-		AclService.allow('salesperson', 'Comments');
+		AclService.addResource('car');
+		AclService.addResource('cars');
+		AclService.addResource('comments');
+
+		AclService.allow('guest', 'car', 'get');
+		AclService.allow('salesperson', 'car', 'sell');
+		AclService.allow('manager', 'car', 'put');
+		AclService.allow('administrator', 'car', 'post');
+		AclService.allow('administrator', 'car', 'uploadpix');
+		AclService.allow('guest', 'comments', 'post');
+		AclService.allow('salesperson', 'comments');
 
 		var authorization = localStorageService.get('authorization');
 		var userIdentity = {
@@ -56,13 +66,10 @@ angular.module('jwtfrontendApp', [
 			localStorageService.set('user', authorization);
 		}
 		userIdentity.roles = authorization;
-		console.log('adding roles:', userIdentity, userIdentity.roles);
 		AclService.setUserIdentity(userIdentity);
-
 	})
 	/*@ngInject*/
 	.run(function ($rootScope, $state) {
-		console.log('run stateChangeError');
 		$rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
 			if (error === 'Unauthorized') {
 				$state.go('login');
@@ -72,7 +79,6 @@ angular.module('jwtfrontendApp', [
 	})
 	/*@ngInject*/
 	.run(function (Restangular, localStorageService) {
-		console.log('run block setDefaultHeaders');
 		Restangular.setDefaultHeaders({
 			Authorization: 'Bearer ' + localStorageService.get('token')
 		});

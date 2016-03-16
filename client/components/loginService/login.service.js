@@ -1,6 +1,6 @@
 (function (app) {
 	'use strict';
-	app.module('services.login', ['LocalStorageModule', 'restangular'])
+	app.module('services.login', ['ng-acl','LocalStorageModule', 'restangular'])
 		.service('LoginService', LoginService);
 
 	/*@ngInject*/
@@ -13,8 +13,6 @@
 			login: login,
 			logout: logout
 		};
-
-
 
 		function isLoggedIn() {
 			return !!localStorageService.get('token');

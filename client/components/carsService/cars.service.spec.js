@@ -5,7 +5,7 @@ describe('CarsService', function() {
   var $httpBackend = null;
 
   // load the controller's module
-  beforeEach(module('jwtfrontendApp'));
+  //beforeEach(module('jwtfrontendApp'));
   beforeEach(module('services.cars'));
 
   beforeEach(inject(function($rootScope, _$httpBackend_, _CarsService_) {
@@ -22,7 +22,7 @@ describe('CarsService', function() {
 
   it('should be possible to get a list of vehicles.', function(done) {
 
-    $httpBackend.when('GET', 'http://localhost:8000/api/cars')
+    $httpBackend.when('GET', '/cars')
       .respond(200, {
         success: true,
         message: ''
@@ -40,7 +40,7 @@ describe('CarsService', function() {
 
   it('should be possible to get one vehicle.', function(done) {
 
-    $httpBackend.when('GET', 'http://localhost:8000/api/cars/1')
+    $httpBackend.when('GET', '/cars/1')
       .respond(200, {
         success: true,
         message: ''
