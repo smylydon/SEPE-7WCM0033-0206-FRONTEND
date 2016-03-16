@@ -34,12 +34,10 @@ angular.module('jwtfrontendApp', [
 	})
 	/*@ngInject*/
 	.run(function (AclService, localStorageService) {
-
 		AclService.addRole('guest');
 		AclService.addRole('salesperson', 'guest');
 		AclService.addRole('manager', 'salesperson');
 		AclService.addRole('administrator', 'manager');
-
 
 		AclService.addResource('car');
 		AclService.addResource('cars');

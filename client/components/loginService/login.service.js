@@ -1,6 +1,6 @@
 (function (app) {
 	'use strict';
-	app.module('services.login', ['ng-acl','LocalStorageModule', 'restangular'])
+	app.module('services.login', ['LocalStorageModule', 'restangular'])
 		.service('LoginService', LoginService);
 
 	/*@ngInject*/
@@ -18,6 +18,19 @@
 			return !!localStorageService.get('token');
 		}
 
+		function setUserAuthorization(authorization, token) {
+			var user = {
+				roles: authorization,
+				getRoles: function () {
+					return this.roles;
+				}
+			};
+			localStorageService.set('authorization', authorization);
+			localStorageService.set('token', token);
+			AclService.setUserIdentity(user);
+			setBearerToken(token);
+		}
+
 		function login(credentials) {
 			if (isFetchingLogin) {
 				return loginPromise.promise;
@@ -26,19 +39,7 @@
 			Restangular.one('login')
 				.customPOST(credentials)
 				.then(function (success) {
-					logout();
-					var authorization = ['salesperson'];
-					var user = {
-						roles: authorization,
-						getRoles: function () {
-							return this.roles;
-						}
-					};
-					localStorageService.set('authorization', authorization);
-					localStorageService.set('token', success.token);
-					AclService.clearUserIdentity();
-					AclService.setUserIdentity(user);
-					setBearerToken();
+					setUserAuthorization(['salesperson'], success.token);
 					loginPromise.resolve('login successful');
 				})
 				.catch(function (error) {
@@ -49,15 +50,13 @@
 		}
 
 		function logout() {
-			localStorageService.set('authorization', null);
-			AclService.clearUserIdentity();
-			localStorageService.set('token', null);
-			setBearerToken();
+			setUserAuthorization(['guest'], null);
 		}
 
-		function setBearerToken() {
+		function setBearerToken(token) {
+			token = token || localStorageService.get('token');
 			Restangular.setDefaultHeaders({
-				Authorization: 'Bearer ' + localStorageService.get('token')
+				Authorization: 'Bearer ' + token
 			});
 		}
 
