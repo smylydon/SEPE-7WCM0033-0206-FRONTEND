@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('jwtfrontendApp', [
+		'ngAnimate',
 		'ngCookies',
+		//'ngProgress',
 		'ngResource',
 		'ngSanitize',
+		'ngToast',
 		'restangular',
 		'ui.router',
 		'ui.bootstrap',

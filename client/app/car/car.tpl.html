@@ -5,18 +5,27 @@
 </header>
 
 <div class="container">
-  <br /><br />
+  <br />
+  <br />
   <div class="row">
-      <div class="col-lg-2">
+    <div class="col-lg-10 col-lg-offset-2" ng-if="!carCtrl.showCar">
+      <h2>No vehicles found</h2>
+      <p>There were no vehicles that matched your search criteria.</p>
+    </div>
+    <div class="col-lg-10 col-lg-offset-2" ng-if="carCtrl.showCar">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>{{carCtrl.car.model}}</h2>
+        </div>
+        <jwt-contact-us></jwt-contact-us>
+      </div>
+      <div class="row">
+        <div class="col-lg-10">
+          <h2>Car Details</h2>
+          <p>{{carCtrl.car.description}}</p>
+        </div>
+      </div>
 
-      </div>
-      <div class="col-lg-10" ng-if="!carCtrl.showCar">
-        <h2>No vehicles found</h2>
-        <p>There were no vehicles that matched your search criteria.</p>
-      </div>
-    <div class="col-lg-10" ng-if="carCtrl.showCar">
-      {{carCtrl.car.model}}
-      {{carCtrl.car.description}}
     </div>
   </div>
 </div>

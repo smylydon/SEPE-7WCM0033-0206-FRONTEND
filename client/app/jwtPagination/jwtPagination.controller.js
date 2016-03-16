@@ -7,11 +7,11 @@
 	/*@ngInject*/
 	function JwtPaginationCtrl($scope) {
 		var pageSize = 5;
-		var page = 0;
 		var totalPages = 0;
 		var lastPage = 0;
 		var vm = this;
 
+		vm.currentPage = 0;
 		vm.pagerClicked = function ($event, index) {
 			if (_.isString(index)) {
 				switch (index.toLowerCase()) {
@@ -19,17 +19,17 @@
 					checkDisabled(0, vm.disableBegining);
 					break;
 				case 'previous':
-					checkDisabled(page - 1, vm.disablePrevious);
+					checkDisabled(vm.currentPage  - 1, vm.disablePrevious);
 					break;
 				case 'next':
-					checkDisabled(page + 1, vm.disableNext);
+					checkDisabled(vm.currentPage  + 1, vm.disableNext);
 					break;
 				case 'last':
 					checkDisabled(lastPage, vm.disableEnding);
 					break;
 				}
 			} else {
-				pagination(page = index - 1, 100, pageSize);
+				pagination(vm.currentPage = index - 1, 100, pageSize);
 			}
 		}
 
@@ -47,7 +47,7 @@
 			vm.showBeginingEnding = false;
 			vm.disableBegining = false;
 			vm.disableEnding = false;
-			page = 0;
+			vm.currentPage  = 0;
 		}
 
 		function pagination(currentPage, length, pageSize) {
@@ -80,13 +80,13 @@
 				for (var i = 0; i < 5; i++) {
 					vm.pages[i] = i + offset;
 				}
-				page = currentPage;
+				vm.currentPage = currentPage;
 			} else {
 				initialize();
 			}
 		}
 		initialize();
-		pagination(page, 100, pageSize);
+		pagination(vm.currentPage , 100, pageSize);
 	}
 
 })(angular);
