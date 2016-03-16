@@ -27,7 +27,7 @@
 				.customPOST(credentials)
 				.then(function (success) {
 					logout();
-					var authorization = ['manager'];
+					var authorization = ['salesperson'];
 					var user = {
 						roles: authorization,
 						getRoles: function () {

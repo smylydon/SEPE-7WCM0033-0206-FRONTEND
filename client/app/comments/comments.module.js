@@ -25,8 +25,8 @@ angular.module('jwtfrontendApp')
 				resolve: {
 					/*@ngInject*/
 					'acl': function ($q, AclService) {
-            console.log('can:',AclService.can('Comments'));
-						if (AclService.can('Comments')) {
+            console.log('can:',AclService.can('comments'));
+						if (AclService.can('comments')) {
               console.log('resolved well');
 							return true;
 						} else {

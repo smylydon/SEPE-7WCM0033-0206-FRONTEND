@@ -10,7 +10,6 @@ angular.module('jwtfrontendApp', [
 		'ng-acl',
 		'LocalStorageModule',
 		'restangular',
-	//	'jwtPagination',
 		'services.cars',
 		'services.login',
 		'services.comments',
