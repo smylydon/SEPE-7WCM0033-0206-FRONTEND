@@ -10,20 +10,26 @@
 
 		vm.cars = [];
 		vm.showList = false;
+		vm.getPage = function (page) {
+			console.log('getPage:', page);
+			getCars(page);
+		};
 
-		function getCars() {
-			CarsService.getCars()
+		function getCars(page) {
+			var setter = {
+				offset: page || 0
+			}
+			CarsService.getCars(setter)
 				.then(function (cars) {
 					vm.cars = cars;
 					vm.showList = false;
-					if (vm.cars.length > 0) {
+					if (cars && cars.rows.length > 0) {
+						vm.cars = cars.rows;
+						vm.totalCars = cars.count;
 						vm.showList = true;
 					}
-          //var pager = pagination(vm.cars,0);
-					//console.log('pager:', pager);
 				}, function (error) {
 					vm.showList = false;
-					console.log(error);
 				});
 		}
 

@@ -33,9 +33,10 @@
       return carsPromise.promise;
     }
 
-    function getCars(cars) {
+    function getCars(setter) {
+      setter = setter || {};
       var callback = function() {
-        Restangular.one('cars').get().then(resolve, reject);
+        Restangular.one('cars').get(setter).then(resolve, reject);
       };
       return makeCall(callback);
     }
