@@ -1,0 +1,34 @@
+<header class="hero-unit">
+  <div class="container">
+    <h3>People</h3>
+  </div>
+</header>
+
+<div class="container">
+  <br /><br />
+  <div class="row">
+      <div class="col-lg-2">
+
+      </div>
+      <div class="col-lg-10" ng-if="!peopleCtrl.showList">
+        <h2>No people were found</h2>
+        <p>There where no people returned.</p>
+      </div>
+    <div class="col-lg-10" ng-if="peopleCtrl.showList">
+
+        <div class="row comment-row"
+        ng-repeat="person in peopleCtrl.people"
+        ng-click="peopleCtrl.personPicked($event, person.id)">
+        <a>
+          <ul>
+            <li><h5>{{person.firstname}}</h5></lid>
+            <li><h6>{{person.middlenames}}</h5></lid>
+            <li><h6>{{person.lastname}}</h6></li>
+            <li><h5>{{person.dob}}<h5></li>
+          </ul>
+        </a>
+        </div>
+
+    </div>
+  </div>
+</div>

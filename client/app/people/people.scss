@@ -1,0 +1,24 @@
+/*.comment-row {
+  border: 1px solid #a0a0a0;
+  margin: 2px 5px;
+  height: 40px;
+  cursor: pointer;
+}
+.comment-row ul {
+  list-style: none;
+}
+.comment-row ul li {
+  display: inline-block;
+  margin-right: 5px;
+  min-width: 130px;
+  overflow-x: hidden;
+}
+.comment-row ul li:first {
+  max-width: 130px;
+  min-width: 130px;
+}
+.comment-row ul li:nth-of-type(2) {
+  max-width: 200px;
+  min-width: 200px;
+}
+*/

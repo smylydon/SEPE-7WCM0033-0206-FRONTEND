@@ -39,7 +39,8 @@
 			Restangular.one('login')
 				.customPOST(credentials)
 				.then(function (success) {
-					setUserAuthorization(['salesperson'], success.token);
+					console.log('success:', success);
+					setUserAuthorization([String(success.accessLevel)], success.token);
 					loginPromise.resolve('login successful');
 				})
 				.catch(function (error) {

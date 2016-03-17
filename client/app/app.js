@@ -16,6 +16,7 @@ angular.module('jwtfrontendApp', [
 		'services.cars',
 		'services.login',
 		'services.comments',
+		'services.people',
 		'services.commentsModal',
 		'services.upload'
 	])
@@ -45,6 +46,7 @@ angular.module('jwtfrontendApp', [
 		AclService.addResource('car');
 		AclService.addResource('cars');
 		AclService.addResource('comments');
+		AclService.addResource('people');
 
 		AclService.allow('guest', 'car', 'get');
 		AclService.allow('salesperson', 'car', 'sell');
@@ -53,6 +55,7 @@ angular.module('jwtfrontendApp', [
 		AclService.allow('administrator', 'car', 'uploadpix');
 		AclService.allow('guest', 'comments', 'post');
 		AclService.allow('salesperson', 'comments');
+		AclService.allow('guest', 'people');
 
 		var authorization = localStorageService.get('authorization');
 		var userIdentity = {
