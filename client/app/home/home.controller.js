@@ -6,8 +6,9 @@
 	  .controller('HomeCtrl', HomeCtrl);
 
 	 /*@ngInject*/
-	function HomeCtrl ($scope, Restangular) {
-
+	function HomeCtrl ($scope, CarsService) {
+		CarsService.getModels(9);
+		CarsService.getYears(9);
 	}
 
 })(angular);

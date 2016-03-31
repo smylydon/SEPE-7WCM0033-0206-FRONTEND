@@ -23,8 +23,11 @@
             </a>
           </div>
           <div class="col-lg-6">
-            <a ui-sref="car({car_id:car.id})"><h4>{{car.model}}</h4></a>
-            {{car.id}}
+            <a ui-sref="car({car_id:car.id})"><h4>{{car.make.name}}&nbsp;{{car.model}}</h4></a>
+            <ul>
+              <li>{{car.body_type}}</li>
+              <li>{{car.milage}}</li>
+            </ul>
           </div>
           <div class="col-lg-2" style="margin: 10px">
               <button class="btn btn-primary" ng-click="carsCtrl.submit($event)">Contact Us</button>
