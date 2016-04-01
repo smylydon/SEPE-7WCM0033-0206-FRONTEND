@@ -46,16 +46,22 @@ angular.module('jwtfrontendApp', [
 		AclService.addResource('car');
 		AclService.addResource('cars');
 		AclService.addResource('comments');
+		AclService.addResource('makes');
 		AclService.addResource('people');
 
 		AclService.allow('guest', 'car', 'get');
+		AclService.allow('guest', 'cars', 'get');
+		AclService.allow('guest', 'makes', 'get');
+		AclService.allow('guest', 'comments', 'post');
+
 		AclService.allow('salesperson', 'car', 'sell');
+		AclService.allow('salesperson', 'people');
+		AclService.allow('salesperson', 'comments');
+		AclService.allow('salesperson', 'cars', 'post');
+
 		AclService.allow('manager', 'car', 'put');
 		AclService.allow('administrator', 'car', 'post');
 		AclService.allow('administrator', 'car', 'uploadpix');
-		AclService.allow('guest', 'comments', 'post');
-		AclService.allow('salesperson', 'comments');
-		AclService.allow('guest', 'people');
 
 		var authorization = localStorageService.get('authorization');
 		var userIdentity = {

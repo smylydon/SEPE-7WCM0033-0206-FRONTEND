@@ -11,6 +11,7 @@
 		var external = {
 			getCars: getCars,
 			getACar: getACar,
+			getMakes:getMakes,
 			getModels: getModels,
 			getYears: getYears
 		};
@@ -71,6 +72,16 @@
 			};
 			return makeCall(callback);
 		}
+
+		function getMakes() {
+			var callback = function () {
+				Restangular.one('makes')
+					.get()
+					.then(resolve, reject);
+			};
+			return makeCall(callback);
+		}
+
 		return external;
 	}
 })(angular);
