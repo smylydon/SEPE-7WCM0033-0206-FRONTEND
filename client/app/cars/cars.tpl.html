@@ -8,8 +8,17 @@
   <br /><br />
   <div class="row">
       <div class="col-lg-2">
+        <select ng-model="carsCtrl.makes.selectedOption" ng-change="carsCtrl.changeMake($event)" class="home-dropdown">
+          <option ng-repeat="make in carsCtrl.makes.availableOptions" value="{{make.id}}">{{make.name}}</option>
+        </select>
 
+        <select ng-model="carsCtrl.models.selectedOption" ng-change="carsCtrl.changeModel($event)" class="home-dropdown">
+          <option ng-repeat="model in carsCtrl.models.availableOptions" value="{{model.id}}">{{model.model}}</option>
+        </select>
+
+        <button class="btn btn-primary" ng-click="carsCtrl.goSearch($event);">Search</button>
       </div>
+
       <div class="col-lg-10" ng-if="!carsCtrl.showList">
         <h2>No vehicles found</h2>
         <p>There no vehicles that match your search criteria.</p>
@@ -35,7 +44,10 @@
           </div>
         </div>
 
-        <jwt-pagination jwt-count="{{carsCtrl.totalCars}}" jwt-callback="carsCtrl.getPage"></jwt-pagination>
+        <uib-pagination total-items="carsCtrl.totalCars" ng-model="carsCtrl.currentPage"
+        ng-change="carsCtrl.currentPageChanged()" max-size="carsCtrl.maxSize"
+        ng-show="carsCtrl.totalCars > carsCtrl.maxSize" class="pagination-sm"
+        boundary-link-numbers="true" rotate="true"></uib-pagination>
     </div>
   </div>
 </div>
