@@ -15,6 +15,7 @@
     <div class="col-lg-10 col-lg-offset-2" ng-if="carCtrl.showCar">
       <div class="row">
         <div class="col-lg-6">
+          <jwt-upload-button jwt-label="'Upload Picture'" jwt-callback="carCtrl.uploadImage"></jwt-upload-button>
           <h2>{{carCtrl.car.make.name}}&nbsp;{{carCtrl.car.model}}</h2>
           <jwt-carousel><jwt-carousel>
         </div>

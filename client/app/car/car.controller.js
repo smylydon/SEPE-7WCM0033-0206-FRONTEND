@@ -9,6 +9,10 @@
     var vm = this;
     vm.showCar = false;
     vm.car = null;
+    
+    vm.uploadImage = function () {
+      console.log('uploadImage clicked');
+    }
 
     function getCar(id){
         CarsService.getACar(id).then(function (car) {

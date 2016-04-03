@@ -5,22 +5,19 @@
 </header>
 
 <div class="container">
-  <br /><br />
+  <br />
+  <br />
   <div class="row">
 
     <div class="col-lg-4 col-lg-offset-4">
-        <form>
-            <div class="form-group">
-                <label for="vehiclePix">Select vehicle picture</label>
-                <input id="vehiclePix" type="file" accept="image/*"
-                class="form-control">
-            </div>
-            <div class="form-group">
-                <button id="submitBtn" class="btn btn-primary" ng-click="uploadCarPixCtrl.submit($event)">Submit</button>
-            </div>
-
+      <span class="btn btn-primary" >
+        <form method="post" enctype="multipart/form-data">
+          <span class="uploadButton">
+            <input id="vehiclePix" type="file" accept="image/*" size="1">
+            <b style="cursor:pointer">{{uploadCarPixCtrl.uploadLabel}}</b>
+          </span>
         </form>
-
+      </span>
     </div>
   </div>
 </div>

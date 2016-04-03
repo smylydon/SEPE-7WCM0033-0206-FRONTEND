@@ -7,6 +7,13 @@
   /*@ngInject*/
   function UploadCarPixCtrl($scope, $state, UploadService) {
     var vm = this;
+    vm.uploadLabel = "Michael Upload";
+
+    vm.fileChanged = function ($event) {
+      $event.preventDefault();
+      var vehiclePix = $('#vehiclePix')[0];
+      console.log('submit buttton clicked:', vehiclePix, vehiclePix.files);
+    }
 
     vm.submit = function($event) {
       $event.preventDefault();
