@@ -21,8 +21,10 @@ describe('Directive: jwtUploadButton', function () {
 	}));
 
 	it('should set label to "Upload Test"', function () {
-    console.log('element:', element[0]);
-		expect(element[0])
-			.toContain('Upload Test');
+		var bold = element.find('b');
+		expect(bold)
+			.toBeDefined();
+		expect(bold.text())
+			.toEqual('Upload Test');
 	});
 });
