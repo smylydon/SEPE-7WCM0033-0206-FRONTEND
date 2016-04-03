@@ -7,7 +7,7 @@
 	/*@ngInject*/
 	function ContactUs() {
 		return {
-			templateUrl: 'app/jwtContactUs/jwtContactUs.html',
+			templateUrl: 'app/jwtContactUs/jwtContactUs.tpl.html',
 			restrict: 'E',
 			replace: true,
 			controller: 'jwtContactUsCtrl as contactCtrl',

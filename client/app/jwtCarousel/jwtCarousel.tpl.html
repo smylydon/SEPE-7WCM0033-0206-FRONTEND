@@ -1,0 +1,10 @@
+<div style="width: 100%; height: 100%; overflow: hidden">
+  <img ng-src="{{carouselCtrl.currentImage}}" class="jwtCarouselMain">
+  <div class="jwtCarouselIconContainer">
+    <ul class="jwtCarouselIcon">
+      <li ng-repeat="icon in carouselCtrl.icons">
+          <img src="./assets/images/{{icon}}" ng-click="carouselCtrl.selectImage($event,$index)">
+      </li>
+    </ul>
+  </div>
+</div>

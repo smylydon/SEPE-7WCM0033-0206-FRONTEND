@@ -7,7 +7,7 @@
 	/*@ngInject*/
 	function UploadButton() {
 		return {
-			templateUrl: 'app/jwtUploadButton/jwtUploadButton.html',
+			templateUrl: 'app/jwtUploadButton/jwtUploadButton.tpl.html',
 			restrict: 'E',
 			replace: true,
 			scope: {

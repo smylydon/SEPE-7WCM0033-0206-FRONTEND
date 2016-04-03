@@ -6,7 +6,7 @@
     /*@ngInject*/
     function jwtCarousel() {
       return {
-        templateUrl: 'app/jwtCarousel/jwtCarousel.html',
+        templateUrl: 'app/jwtCarousel/jwtCarousel.tpl.html',
         restrict: 'E',
         replace: true,
         bindToController: true,

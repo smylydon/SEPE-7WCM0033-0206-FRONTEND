@@ -1,5 +1,5 @@
 {
-  "name": "jwtfrontend",
+  "name": "jwtfrontendApp",
   "version": "0.0.1",
   "main": "server/app.js",
   "dependencies": {

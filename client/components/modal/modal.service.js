@@ -18,7 +18,7 @@
           angular.extend(modalScope, scope);
 
           return $modal.open({
-              templateUrl: 'components/modal/modal.html',
+              templateUrl: 'components/modal/modal.tpl.html',
               windowClass: modalClass,
               scope: modalScope
           });

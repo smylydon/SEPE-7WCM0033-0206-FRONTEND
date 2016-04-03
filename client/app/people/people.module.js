@@ -25,7 +25,7 @@ angular.module('jwtfrontendApp')
 				resolve: {
 					/*@ngInject*/
 					'acl': function ($q, AclService) {
-						if (AclService.can('people')) {
+						if (AclService.can('people','get')) {
 							return true;
 						} else {
 							return $q.reject('Unauthorized');

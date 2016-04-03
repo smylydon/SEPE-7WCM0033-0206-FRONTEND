@@ -5,6 +5,6 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/jwtfrontend-test'
+    uri: 'mongodb://localhost/jwtfrontendApp-test'
   }
 };

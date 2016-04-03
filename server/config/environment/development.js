@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/jwtfrontend-dev'
+    uri: 'mongodb://localhost/jwtfrontendApp-dev'
   },
 
   seedDB: true
