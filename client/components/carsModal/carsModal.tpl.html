@@ -1,0 +1,54 @@
+<div class="modal-header">
+  <h3 class="modal-title">Cars R Us</h3>
+</div>
+<div class="modal-body commentsModal">
+  <form name="outerForm" class="tab-form-demo">
+  <uib-tabset active="activeForm">
+    <uib-tab index="0" heading="Info">
+      <ng-form name="nestedForm">
+        <div class="form-group">
+            <label for="Name">Make</label>
+            <input id="Name" type="text" class="form-control"
+            ng-minlength="2" ng-model="carsModalCtrl.make.make"
+            placeholder="Ford" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="emailAddress">Model</label>
+            <input id="emailAddress" ng-email type="text"
+             ng-model="carsModalCtrl.model"
+            class="form-control" placeholder="Focus" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="subject">Year</label>
+            <input id="subject" type="text" class="form-control" placeholder="2009"
+            ng-minlength="2" ng-model="carsModalCtrl.car.year" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="subject">Milage</label>
+            <input id="subject" type="text" class="form-control" placeholder="10000"
+            ng-minlength="2" ng-model="carsModalCtrl.car.milage" ng-required="true">
+        </div>
+      </ng-form>
+    </uib-tab>
+    <uib-tab index="1" heading="Description">
+      <ng-form name="nestedForm">
+        <div class="form-group">
+            <label for="subject">Description</label>
+            <textarea id="message" class="form-control" placeholder="10000"
+            ng-minlength="2" ng-model="carsModalCtrl.car.description" ng-required="true"></textarea>
+        </div>
+      </ng-form>
+    </uib-tab>
+    <uib-tab index="2" heading="Upload">
+      <div>
+        
+      More Tab Content
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</form>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="carsModalCtrl.cancel()">Dismiss</button>
+</div>

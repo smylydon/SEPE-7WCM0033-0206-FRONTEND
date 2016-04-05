@@ -18,8 +18,9 @@
 			'services.login',
 			'services.comments',
 			'services.people',
-			'services.commentsModal',
-			'services.upload'
+			'services.upload',
+			'services.carsModal',
+			'services.commentsModal'
 		])
 		/*@ngInject*/
 		.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {

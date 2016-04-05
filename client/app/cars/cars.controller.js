@@ -5,7 +5,7 @@
 		.controller('CarsCtrl', CarsCtrl);
 
 	/*@ngInject*/
-	function CarsCtrl($scope, $state, CarsService) {
+	function CarsCtrl($scope, $state, CarsModalService, CarsService) {
 		var vm = this;
 		var dummy = {
 			selectedOption: null,
@@ -46,8 +46,7 @@
 		}
 
 		vm.currentPageChanged = function () {
-			var page = Math.max((vm.currentPage)-1, 0);
-			console.log('getPage:', page);
+			var page = Math.max((vm.currentPage) - 1, 0);
 			getCars(page);
 		};
 
@@ -68,12 +67,20 @@
 						vm.cars = cars.rows;
 						vm.totalCars = cars.count;
 						vm.showList = true;
-						console.log('totalCars:', cars.count, vm.maxSize);
 					}
 				}, function (error) {
 					vm.showList = false;
 				});
 		}
+
+		vm.carPicked = function ($event, carId) {
+			var car = _.find(vm.cars, {
+				id: carId
+			});
+			if (car) {
+				CarsModalService.showModal(car);
+			}
+		};
 
 		getMakes();
 	}

@@ -1,5 +1,6 @@
 (function (app) {
 	'use strict';
+	
 	app.module('services.upload', ['LocalStorageModule', 'restangular'])
 		.service('UploadService', UploadService);
 

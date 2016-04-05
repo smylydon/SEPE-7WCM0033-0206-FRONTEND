@@ -3,7 +3,8 @@
 
   app.module('jwtfrontendApp')
     .controller('CommentsCtrl', CommentsCtrl);
-
+    
+	/*@ngInject*/
   function CommentsCtrl($scope, $state, CommentsService, CommentsModalService) {
     var vm = this;
 
@@ -31,8 +32,7 @@
       if (comment) {
         CommentsModalService.showModal(comment);
       }
-    }
-
+    };
 
     getComments();
   }

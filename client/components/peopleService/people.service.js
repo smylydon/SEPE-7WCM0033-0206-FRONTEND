@@ -1,5 +1,6 @@
 (function(app) {
   'use strict';
+  
   app.module('services.people', ['restangular'])
     .service('PeopleService', PeopleService);
 

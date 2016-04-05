@@ -2,29 +2,29 @@
 
   'use strict';
 
-  app.module('services.commentsModal', [])
-    .service('CommentsModalService', CommentsModalService);
+  app.module('services.carsModal', [])
+    .service('CarsModalService', CarsModalService);
 
   /*@ngInject*/
-  function CommentsModalService($rootScope, $uibModal,$q) {
+  function CarsModalService($rootScope, $uibModal,$q) {
     var isBusy = false;
-    var commentPromise = false;
+    var carsPromise = false;
 
     var external = {
       showModal: showModal
     };
 
-    function showModal(comment) {
+    function showModal(car) {
       var modalScope = $rootScope.$new();
       var modalInstance = $uibModal.open({
         animation: true,
-        templateUrl: 'components/commentsModal/commentsModal.tpl.html',
+        templateUrl: 'components/carsModal/carsModal.tpl.html',
         size: 'md',
-        controllerAs: 'commentsModalCtrl',
+        controllerAs: 'carsModalCtrl',
         scope: modalScope,
         controller: function() {
           var vm = this;
-          vm.comment = comment;
+          vm.car = _.clone(car);
 
           vm.cancel = function() {
             modalInstance.dismiss('cancel');

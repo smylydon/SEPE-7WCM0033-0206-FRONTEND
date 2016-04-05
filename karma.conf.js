@@ -11,22 +11,20 @@ module.exports = function (config) {
 
 		// list of files / patterns to load in the browser
 		files: [
-			'client/bower_components/jquery/jquery.min.js',
+		//'client/bower_components/jquery/jquery.min.js',
 			'client/bower_components/lodash/lodash.js',
 			'client/bower_components/angular/angular.js',
 			'client/bower_components/angular-animate/angular-animate.js',
 			'client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 			'client/bower_components/angular-cookies/angular-cookies.js',
-			'client/bower_components/angular-local-storage/dist/angular-local-storage.js',
 			'client/bower_components/angular-mocks/angular-mocks.js',
 			'client/bower_components/angular-resource/angular-resource.js',
 			'client/bower_components/angular-sanitize/angular-sanitize.js',
-
-			'client/bower_components/angularjs-acl/dist/acl.js',
-			'client/bower_components/ngToast/dist/ngToast.min.js',
-			//'client/bower_components/lodash/dist/lodash.min.js',
 			'client/bower_components/angular-ui-router/release/angular-ui-router.js',
 
+			'client/bower_components/angular-local-storage/dist/angular-local-storage.js',
+			'client/bower_components/angularjs-acl/dist/acl.js',
+			'client/bower_components/ngToast/dist/ngToast.min.js',
 			'client/bower_components/restangular/dist/restangular.js',
 			'client/app/app.js',
 			//'client/app/app.coffee',
