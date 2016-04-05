@@ -14,7 +14,6 @@
 		vm.selectImage = function ($event, index) {
 			vm.currentImage = './assets/images/' + vm.icons[index];
 		};
-
 	}
 
 })(angular);

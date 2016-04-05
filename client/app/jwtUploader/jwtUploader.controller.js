@@ -1,18 +1,18 @@
 (function (app) {
 	'use strict';
 
-	app.module('jwt.uploadButton',[])
-		.controller('jwtUploadButtonCtrl', jwtUploadButtonCtrl);
+	app.module('jwt.uploader',['jwt.uploadButton'])
+		.controller('jwtUploaderCtrl', jwtUploaderCtrl);
 
 	/*@ngInject*/
-	function jwtUploadButtonCtrl($scope, $element) {
+	function jwtUploaderCtrl($scope, $element) {
 		var uploadCallback = $scope.jwtCallback || angular.noop;
 		var vm = this;
 		var uploadInput = $element.find('input');
 
 		vm.uploadLabel = $scope.jwtLabel || 'Upload';
 
-		console.log('my input is:', $scope.jwtLabel);
+		console.log('jwtUploaderCtrl :', $scope.jwtLabel);
 		$element.bind('change', uploadImages);
 
 		function uploadImages($event) {

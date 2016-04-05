@@ -20,7 +20,8 @@
 			'services.people',
 			'services.upload',
 			'services.carsModal',
-			'services.commentsModal'
+			'services.commentsModal',
+			'jwt.uploader'
 		])
 		/*@ngInject*/
 		.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {

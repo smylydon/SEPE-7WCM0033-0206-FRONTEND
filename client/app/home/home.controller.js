@@ -24,16 +24,16 @@
 			});
 
 		vm.changeMake = function ($event) {
-			var makes_id = vm.makes.selectedOption;
-			CarsService.getModels(makes_id)
+			var makesId = vm.makes.selectedOption;
+			CarsService.getModels(makesId)
 				.then(function (models) {
-					vm.models.availableOptions =_.uniq(models,'model');
-					console.log(_.uniq(models,'model'));
+					vm.models.availableOptions = _.uniq(models, 'model');
+					console.log(_.uniq(models, 'model'));
 				})
 				.catch(function (error) {
 					console.log(error);
 				});
-		}
+		};
 	}
 
 })(angular);

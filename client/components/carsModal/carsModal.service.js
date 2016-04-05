@@ -2,7 +2,7 @@
 
   'use strict';
 
-  app.module('services.carsModal', [])
+  app.module('services.carsModal', ['jwt.uploader'])
     .service('CarsModalService', CarsModalService);
 
   /*@ngInject*/

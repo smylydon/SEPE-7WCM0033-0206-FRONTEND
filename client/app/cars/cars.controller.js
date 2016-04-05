@@ -34,8 +34,8 @@
 		}
 
 		vm.changeMake = function ($event) {
-			var makes_id = vm.makes.selectedOption;
-			CarsService.getModels(makes_id)
+			var makesId = vm.makes.selectedOption;
+			CarsService.getModels(makesId)
 				.then(function (models) {
 					vm.models.availableOptions = _.uniq(models, 'model');
 					console.log(_.uniq(models, 'model'));
@@ -43,7 +43,7 @@
 				.catch(function (error) {
 					console.log(error);
 				});
-		}
+		};
 
 		vm.currentPageChanged = function () {
 			var page = Math.max((vm.currentPage) - 1, 0);
@@ -57,7 +57,7 @@
 		function getCars(page) {
 			var setter = {
 				offset: page || 0
-			}
+			};
 
 			CarsService.getCars(setter)
 				.then(function (cars) {

@@ -1,7 +1,7 @@
 (function (app) {
 	'use strict';
 
-	app.module('jwtfrontendApp')
+	app.module('jwt.uploadButton')
 		.directive('jwtUploadButton', UploadButton);
 
 	/*@ngInject*/

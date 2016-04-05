@@ -3,7 +3,7 @@
 describe('Directive: jwtUploadButton', function () {
 
 	// load the directive's module and view
-	beforeEach(module('jwtfrontendApp'));
+	beforeEach(module('jwt.uploadButton'));
 	beforeEach(module('app/jwtUploadButton/jwtUploadButton.tpl.html'));
 
 	var element, scope, controller;
