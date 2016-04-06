@@ -2,11 +2,11 @@
 
   'use strict';
 
-  app.module('services.carsModal', ['jwt.uploader'])
+  app.module('services.carsModal', ['jwt.uploader','services.upload'])
     .service('CarsModalService', CarsModalService);
 
   /*@ngInject*/
-  function CarsModalService($rootScope, $uibModal,$q) {
+  function CarsModalService($rootScope, $uibModal,$q, UploadService) {
     var isBusy = false;
     var carsPromise = false;
 
@@ -25,6 +25,16 @@
         controller: function() {
           var vm = this;
           vm.car = _.clone(car);
+
+          vm.uploadFiles = function (files) {
+            UploadService.upload('cars/uploadpix', files)
+              .then(function (success) {
+                console.log('upload done:', success.success);
+              })
+              .catch(function (error) {
+                console.log('failed to upload:', error);
+              });
+          };
 
           vm.cancel = function() {
             modalInstance.dismiss('cancel');
