@@ -6,7 +6,7 @@
 
 	/*@ngInject*/
 	function jwtCarouselCtrl($scope) {
-		var vm = this;
+		var vm = this; //jshint ignore:line
 		vm.icons = ['accent1.jpg',
 			'accent2.jpg', 'accent3.jpg', 'accent4.jpg', 'accent5.jpg', 'accent6.jpg'
 		];

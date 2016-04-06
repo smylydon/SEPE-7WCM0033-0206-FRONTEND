@@ -6,7 +6,7 @@
 
 	/*@ngInject*/
 	function jwtContactUsCtrl($scope, CommentsService) {
-		var vm = this;
+		var vm = this;//jshint ignore:line
 		vm.customerName = '';
 		vm.message = '';
 		vm.emailAddress = '';
