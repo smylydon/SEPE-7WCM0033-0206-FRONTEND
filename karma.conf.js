@@ -22,7 +22,7 @@ module.exports = function (config) {
 			'client/bower_components/angular-resource/angular-resource.js',
 			'client/bower_components/angular-sanitize/angular-sanitize.js',
 			'client/bower_components/angular-ui-router/release/angular-ui-router.js',
-			'client/bower_components/angular-ui-tinymce/dist/angular-ui-tinymce.js',
+			'client/bower_components/angular-ui-tinymce/dist/tinymce.min.js',
 
 			'client/bower_components/angular-local-storage/dist/angular-local-storage.js',
 			'client/bower_components/angularjs-acl/dist/acl.js',
