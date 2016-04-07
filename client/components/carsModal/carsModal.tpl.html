@@ -9,13 +9,13 @@
         <div class="form-group">
             <label for="Name">Make</label>
             <input id="Name" type="text" class="form-control"
-            ng-minlength="2" ng-model="carsModalCtrl.make.make"
+            ng-minlength="2" ng-model="carsModalCtrl.car.make.name"
             placeholder="Ford" ng-required="true">
         </div>
         <div class="form-group">
             <label for="emailAddress">Model</label>
             <input id="emailAddress" ng-email type="text"
-             ng-model="carsModalCtrl.model"
+             ng-model="carsModalCtrl.car.model"
             class="form-control" placeholder="Focus" ng-required="true">
         </div>
         <div class="form-group">
@@ -34,14 +34,14 @@
       <ng-form name="nestedForm">
         <div class="form-group">
             <label for="subject">Description</label>
-            <textarea id="message" class="form-control" placeholder="10000"
+            <textarea id="message" class="form-control no-resize" placeholder="10000"
             ng-minlength="2" ng-model="carsModalCtrl.car.description" ng-required="true"></textarea>
         </div>
       </ng-form>
     </uib-tab>
     <uib-tab index="2" heading="Upload">
       <div style="height:300px;width:550px">
-              <jwt-uploader jwt-callback="carsModalCtrl.uploadFiles"></jwt-uploader>
+          <jwt-uploader jwt-callback="carsModalCtrl.uploadFiles"></jwt-uploader>
       </div>
     </uib-tab>
   </uib-tabset>
