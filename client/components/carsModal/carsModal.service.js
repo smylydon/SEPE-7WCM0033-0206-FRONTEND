@@ -26,6 +26,19 @@
           var vm = this;
           vm.car = _.clone(car);
 
+          vm.tinymceOptions = {
+            onChange: function($event) {
+              // put logic here for keypress and cut/paste changes
+            },
+            inline: false,
+            plugins : 'advlist autolink lists charmap print preview',
+            skin: 'lightgray',
+            theme : 'modern',
+            menu:[],
+            resize: false,
+            height: 154,
+          };
+
           vm.uploadFiles = function (files) {
             UploadService.upload('cars/uploadpix', files)
               .then(function (success) {
