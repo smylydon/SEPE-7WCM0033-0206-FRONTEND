@@ -11,6 +11,7 @@
 			'restangular',
 			'ui.router',
 			'ui.bootstrap',
+			'ui.tinymce',
 			'ng-acl',
 			'LocalStorageModule',
 			'restangular',
