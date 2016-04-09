@@ -9,13 +9,18 @@
 
 		vm.people = [];
 		vm.showList = false;
+		vm.maxSize = 10;
+		vm.currentPage = 1;
+		vm.totalPeople = 0;
 
 		function getPeople() {
 			PeopleService.getPeople()
 				.then(function (people) {
 					vm.people = people;
 					vm.showList = false;
-					if (vm.people.length > 0) {
+					if (people && people.rows.length > 0) {
+						vm.people = people.rows;
+						vm.totalPeople = people.count;
 						vm.showList = true;
 					}
 					console.log('people:', people);
