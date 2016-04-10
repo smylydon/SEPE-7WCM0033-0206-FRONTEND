@@ -9,7 +9,9 @@
 			templateUrl: 'app/jwtCarousel/jwtCarousel.tpl.html',
 			restrict: 'E',
 			replace: true,
-			bindToController: true,
+			scope: {
+				jwtPhotos: '='
+			},
 			controller: 'jwtCarouselCtrl as carouselCtrl',
 			link: function (scope, element, attrs) {}
 		};

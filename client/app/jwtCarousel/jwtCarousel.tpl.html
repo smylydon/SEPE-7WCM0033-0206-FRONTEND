@@ -3,7 +3,7 @@
   <div class="jwtCarouselIconContainer">
     <ul class="jwtCarouselIcon">
       <li ng-repeat="icon in carouselCtrl.icons">
-          <img src="./assets/images/{{icon}}" ng-click="carouselCtrl.selectImage($event,$index)">
+          <img src="{{icon}}" ng-click="carouselCtrl.selectImage($event,$index)">
       </li>
     </ul>
   </div>

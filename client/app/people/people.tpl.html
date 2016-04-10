@@ -28,7 +28,10 @@
           </ul>
         </a>
         </div>
-
+        <uib-pagination total-items="peopleCtrl.totalPeople" ng-model="peopleCtrl.currentPage"
+        ng-change="peopleCtrl.currentPageChanged()" max-size="peopleCtrl.maxSize"
+        ng-show="peopleCtrl.totalPeople > peopleCtrl.maxSize" class="pagination-sm"
+        boundary-link-numbers="true" rotate="true"></uib-pagination>
     </div>
   </div>
 </div>
