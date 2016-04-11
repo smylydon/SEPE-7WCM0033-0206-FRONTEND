@@ -1,24 +1,38 @@
-(function (app) {
-	'use strict';
+(function(app) {
+  'use strict';
 
-	app.module('jwt.uploadButton',[])
-		.controller('jwtUploadButtonCtrl', jwtUploadButtonCtrl);
+  app.module('jwt.uploadButton', [])
+    .controller('jwtUploadButtonCtrl', jwtUploadButtonCtrl);
 
-	/*@ngInject*/
-	function jwtUploadButtonCtrl($scope, $element) {
-		var vm = this;//jshint ignore:line
-		var uploadInput = $element.find('input');
-		var uploadCallback = $scope.jwtCallback || angular.noop;
-		vm.uploadLabel = $scope.jwtLabel || 'Upload';
+  /*@ngInject*/
+  function jwtUploadButtonCtrl($scope, $element) {
+    var vm = this; //jshint ignore:line
+    var uploadInput = null;
+    var title = null;
+    var span = null;
+    var uploadCallback = $scope.jwtCallback || angular.noop;
+    var uploadLabel = $scope.jwtLabel || 'Upload';
 
-		console.log('my input is:', $scope.jwtLabel);
-		$element.bind('change', uploadImages);
+    function addUploadElement() {
+      if (uploadInput || title) {
+        uploadInput.off('change');
+        title.remove();
+        uploadInput.remove();
+      }
+      uploadInput = angular.element('<input type="file" accept="image/*" size="1">');
+      title = angular.element('<b>' + uploadLabel + '</b>');
+      span = $element.find('.uploadButton');
+      uploadInput.on('change', uploadImages);
+      span.append(uploadInput);
+      span.append(title);
+    }
 
-		function uploadImages($event) {
-			var files = uploadInput[0].files;
-			console.log('files changed:', files);
-			uploadCallback(files);
-		}
-	}
+    function uploadImages($event) {
+      uploadCallback(uploadInput[0].files);
+      addUploadElement();
+    }
+
+    addUploadElement();
+  }
 
 })(angular);
