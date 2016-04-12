@@ -5,7 +5,7 @@
 		.controller('CarCtrl', CarCtrl);
 
 	/*@ngInject*/
-	function CarCtrl($scope, $state, $stateParams, CarsModalService, CarsService) {
+	function CarCtrl($scope, $state, $stateParams, $q, CarsModalService, CarsService) {
 		var vm = this;
 		vm.showCar = false;
 		vm.car = null;
@@ -21,6 +21,7 @@
 					vm.images = [];
 					vm.car = car;
 					vm.showCar = false;
+					console.log('car is:', car);
 					if (vm.car) {
 						vm.showCar = true;
 						vm.images = vm.car.images;
@@ -28,16 +29,29 @@
 							return image.path.replace('public/','./');
 						});
 					}
-					console.log('car:', car);
 				}, function (error) {
 					vm.showCar = false;
-					console.log(error);
 				});
 		}
 
 		vm.editCar = function ($event) {
+			var oldCar = vm.car;
+			var newCar = null;
 			if (vm.car) {
-				CarsModalService.showModal(vm.car);
+				CarsModalService.showModal(vm.car)
+				.then(function(close) {
+					if (close.save && close.newCar) {
+						newCar = close.newCar.clone();
+						return close.newCar.save();
+					} else {
+						return $q.reject('cancelled');
+					}
+				}).then(function (car) {
+					console.log('wow it worked:', car, oldCar);
+					vm.car = newCar;
+				}).catch(function(error) {
+						vm.car = oldCar;
+				});
 			}
 		};
 

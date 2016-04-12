@@ -5,7 +5,7 @@
 		.controller('CarsCtrl', CarsCtrl);
 
 	/*@ngInject*/
-	function CarsCtrl($scope, $state, CarsModalService, CarsService) {
+	function CarsCtrl($scope, $state,$q, CarsModalService, CarsService) {
 		var vm = this;
 		var dummy = {
 			selectedOption: null,
@@ -67,10 +67,42 @@
 						vm.cars = cars.rows;
 						vm.totalCars = cars.count;
 						vm.showList = true;
+						console.log('cars:', cars);
 					}
 				}, function (error) {
 					vm.showList = false;
 				});
+		}
+
+		function editCar(car) {
+			var oldCar = car;
+			var newCar = null;
+			if (car) {
+				CarsModalService.showModal(car)
+				.then(function(close) {
+					if (close.save && close.newCar) {
+						newCar = _.cloneDeep(close.newCar);
+						return CarsService.updateCar(close.newCar);
+					} else {
+						return $q.reject('cancelled');
+					}
+				}).then(function (done) {
+					console.log('wow it worked:', car, oldCar);
+					car.licence_plate = newCar.licence_plate;
+					car.model = newCar.model;
+					car.make = newCar.make;
+					car.make_id = newCar.make_id;
+					car.mileage = newCar.mileage;
+					car.year = newCar.year;
+					car.chassis_number = newCar.chassis_number;
+					car.description = newCar.description;
+					car.updated_at = newCar.updated_at;
+					car.body_type = newCar.body_type;
+					car.transmission = newCar.transmission;
+				}).catch(function(error) {
+					//car = oldCar;
+				});
+			}
 		}
 
 		vm.carPicked = function ($event, carId) {
@@ -78,7 +110,8 @@
 				id: carId
 			});
 			if (car) {
-				CarsModalService.showModal(car);
+				console.log('carPicked:', car);
+				editCar(car);
 			}
 		};
 
