@@ -15,7 +15,7 @@ describe('Directive: jwtUploadButton', function () {
 		scope.jwtLabel = 'hello';
 		scope.jwtCallback = function () {};
 
-		element = angular.element('<jwt-upload-button jwt-label="\'Upload Test\'"></jwt-upload-button>');
+		element = angular.element('<div><jwt-upload-button jwt-label="\'Upload Test\'"></jwt-upload-button></div>');
 		element = $compile(element)(scope);
 		scope.$digest();
 	}));

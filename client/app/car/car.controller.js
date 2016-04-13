@@ -26,7 +26,7 @@
 						vm.showCar = true;
 						vm.images = vm.car.images;
 						vm.images = _.map(vm.images, function (image) {
-							return image.path.replace('public/','./');
+							return image.path;
 						});
 					}
 				}, function (error) {
@@ -47,7 +47,6 @@
 						return $q.reject('cancelled');
 					}
 				}).then(function (car) {
-					console.log('wow it worked:', car, oldCar);
 					vm.car = newCar;
 				}).catch(function(error) {
 						vm.car = oldCar;

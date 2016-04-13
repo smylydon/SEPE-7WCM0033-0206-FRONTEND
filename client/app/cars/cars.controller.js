@@ -67,7 +67,6 @@
 						vm.cars = cars.rows;
 						vm.totalCars = cars.count;
 						vm.showList = true;
-						console.log('cars:', cars);
 					}
 				}, function (error) {
 					vm.showList = false;
@@ -87,7 +86,6 @@
 						return $q.reject('cancelled');
 					}
 				}).then(function (done) {
-					console.log('wow it worked:', car, oldCar);
 					car.licence_plate = newCar.licence_plate;
 					car.model = newCar.model;
 					car.make = newCar.make;
@@ -110,7 +108,6 @@
 				id: carId
 			});
 			if (car) {
-				console.log('carPicked:', car);
 				editCar(car);
 			}
 		};

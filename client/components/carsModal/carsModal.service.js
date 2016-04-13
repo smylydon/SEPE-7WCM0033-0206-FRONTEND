@@ -42,7 +42,13 @@
           };
 
           vm.uploadFiles = function(files) {
-            UploadService.upload('cars/uploadpix', files)
+            var setter = {
+              url:'cars/uploadpix',
+              files: files,
+              idType: 'car_id',
+              idValue: vm.car.id
+            };
+            UploadService.upload(setter)
               .then(function(success) {
                 console.log('upload done:', success.success);
               })

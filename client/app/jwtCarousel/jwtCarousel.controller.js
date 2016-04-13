@@ -23,7 +23,6 @@
     vm.selectImage = function($event, index) {
       vm.currentImage = vm.icons[index];
     };
-		console.log(':::',vm.icons, $scope.jwtPhotos);
   }
 
 })(angular);

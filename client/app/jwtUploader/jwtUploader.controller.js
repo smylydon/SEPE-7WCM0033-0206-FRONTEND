@@ -11,7 +11,6 @@
 		vm.uploadLabel = $scope.jwtLabel || 'Upload Picture';
 
 		vm.uploadImages = function (files) {
-			console.log('uploadImages', files);
 			uploadCallback(files);
 		}
 	}

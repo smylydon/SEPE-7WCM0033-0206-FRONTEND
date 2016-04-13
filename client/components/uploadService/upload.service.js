@@ -11,13 +11,13 @@
 			upload: upload,
 		};
 
-		function wrapFile(url, file) {
+		function wrapFile(setter, file) {
       var formData = new FormData();
-      //formData.setAttribute('enctype', 'multipart/form-data');
-      formData.append('photo', file);
-      formData.append('car_id', 1);
 
-			return Restangular.one(url)
+      formData.append('photo', file);
+      formData.append(setter.idType, setter.idValue);
+
+			return Restangular.one(setter.url)
 				.withHttpConfig({
 					transformRequest: angular.identity
 				})
@@ -26,11 +26,10 @@
 				});
 		}
 
-		function upload(url, files) {
+		function upload(setter) {
 			var uploadPromise = $q.defer();
-			var uploads = _.reduce(files, function (collection, file) {
-				console.log('file :', file);
-				collection.push(wrapFile(url, file));
+			var uploads = _.reduce(setter.files, function (collection, file) {
+				collection.push(wrapFile(setter, file));
 				return collection;
 			}, []);
 

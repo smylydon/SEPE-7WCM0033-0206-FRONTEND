@@ -19,7 +19,6 @@
 			controller: 'jwtUploaderCtrl as uploaderCtrl',
 			link: function (scope, element, attrs) {
 				function dragEnter($event) {
-					console.log('dragEnter');
 					element.addClass('highlightDropZone');
 				}
 
@@ -37,7 +36,6 @@
 				}
 
 				function dragLeave($event) {
-					console.log('dragLeave');
 					element.removeClass('highlightDropZone');
 				}
 
