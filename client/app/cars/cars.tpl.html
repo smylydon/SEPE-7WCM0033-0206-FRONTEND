@@ -39,7 +39,7 @@
             </ul>
           </div>
           <div class="col-lg-2" style="margin: 10px">
-              <button class="btn btn-primary" id="edit{{$index}}" ng-click="carsCtrl.carPicked($event, car.id)">Edit</button>
+              <button class="btn btn-primary" ng-if="carsCtrl.can('car','post')" id="edit{{$index}}" ng-click="carsCtrl.carPicked($event, car.id)">Edit</button>
               <input type="checkbox" >add to compare
           </div>
         </div>

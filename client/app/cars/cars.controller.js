@@ -5,19 +5,19 @@
 		.controller('CarsCtrl', CarsCtrl);
 
 	/*@ngInject*/
-	function CarsCtrl($scope, $state,$q, CarsModalService, CarsService) {
+	function CarsCtrl($scope, $state,$q, AclService, CarsModalService, CarsService) {
 		var vm = this;
 		var dummy = {
 			selectedOption: null,
 			availableOptions: []
 		};
-
+		vm.can = AclService.can;
 		vm.cars = [];
 		vm.showList = false;
 		vm.maxSize = 10;
 		vm.currentPage = 1;
 		vm.totalCars = 0;
-
+		console.log('can:',vm.can('car','post'));
 		vm.makes = _.clone(dummy);
 		vm.models = _.clone(dummy);
 

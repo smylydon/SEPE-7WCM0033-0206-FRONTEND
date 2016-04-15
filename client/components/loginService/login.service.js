@@ -52,6 +52,7 @@
 
 		function logout() {
 			setUserAuthorization(['guest'], null);
+			return $q.resolve('logged out');
 		}
 
 		function setBearerToken(token) {

@@ -18,5 +18,4 @@ var CarPage = function () {
 		});
 }
 
-
 module.exports = new CarPage();

@@ -11,6 +11,10 @@ describe('Login View', function () {
 		page = require('./login.po');
 	});
 
+	afterEach(function () {
+		browser.get('/logged-out');
+	})
+
 	it('should prevent navigation to route that require login.', function () {
 		browser.get('/comments/')
 			.then(function () {
