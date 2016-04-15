@@ -4,6 +4,9 @@ describe('Main View', function() {
   var page;
 
   beforeEach(function() {
+    browser.driver.manage()
+      .window()
+      .maximize();
     browser.get('/');
     page = require('./main.po');
   });

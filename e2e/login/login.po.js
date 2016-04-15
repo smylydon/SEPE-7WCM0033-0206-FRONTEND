@@ -5,10 +5,10 @@
 
 'use strict';
 
-var LoginPage = function() {
-  this.emailAddressEl = element(by.id('emailAddress'));
-  this.passwordEl = element(by.id('password'));
-  this.submitEl = element(by.id('submitBtn'));
+var LoginPage = function () {
+	this.emailAddressEl = element(by.id('emailAddress'));
+	this.passwordEl = element(by.id('password'));
+	this.submitEl = element(by.id('submitBtn'));
 };
 
 module.exports = new LoginPage();

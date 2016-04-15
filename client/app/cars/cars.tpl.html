@@ -25,7 +25,7 @@
       </div>
     <div class="col-lg-10" ng-if="carsCtrl.showList">
 
-        <div class="row car-row" ng-repeat="car in carsCtrl.cars">
+        <div class="row car-row" id="row{{$index}}" ng-repeat="car in carsCtrl.cars">
           <div class="col-lg-2 car-list-image">
             <a ui-sref="car({car_id:car.id})">
               <img ng-src="./images/default/ghostVehicleLarge.jpg">
@@ -39,7 +39,7 @@
             </ul>
           </div>
           <div class="col-lg-2" style="margin: 10px">
-              <button class="btn btn-primary" ng-click="carsCtrl.carPicked($event, car.id)">Edit</button>
+              <button class="btn btn-primary" id="edit{{$index}}" ng-click="carsCtrl.carPicked($event, car.id)">Edit</button>
               <input type="checkbox" >add to compare
           </div>
         </div>
