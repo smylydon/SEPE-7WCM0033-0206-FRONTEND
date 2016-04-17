@@ -5,7 +5,7 @@
 		.controller('CarsCtrl', CarsCtrl);
 
 	/*@ngInject*/
-	function CarsCtrl($scope, $state,$q, AclService, CarsModalService, CarsService) {
+	function CarsCtrl($scope, $state, $q, AclService, CarsModalService, CarsService) {
 		var vm = this;
 		var dummy = {
 			selectedOption: null,
@@ -17,7 +17,6 @@
 		vm.maxSize = 10;
 		vm.currentPage = 1;
 		vm.totalCars = 0;
-		console.log('can:',vm.can('car','post'));
 		vm.makes = _.clone(dummy);
 		vm.models = _.clone(dummy);
 
@@ -38,7 +37,6 @@
 			CarsService.getModels(makesId)
 				.then(function (models) {
 					vm.models.availableOptions = _.uniq(models, 'model');
-					console.log(_.uniq(models, 'model'));
 				})
 				.catch(function (error) {
 					console.log(error);
@@ -67,6 +65,15 @@
 						vm.cars = cars.rows;
 						vm.totalCars = cars.count;
 						vm.showList = true;
+						_.forEach(cars.rows, function (car) {
+							if (_.isArray(car.images) && car.images.length > 0) {
+								car.images = _.map(car.images, function (image) {
+									return image.path;
+								});
+							} else {
+								car.images = ['./images/default/ghostVehicleLarge.jpg'];
+							}
+						});
 					}
 				}, function (error) {
 					vm.showList = false;
@@ -78,28 +85,30 @@
 			var newCar = null;
 			if (car) {
 				CarsModalService.showModal(car)
-				.then(function(close) {
-					if (close.save && close.newCar) {
-						newCar = _.cloneDeep(close.newCar);
-						return CarsService.updateCar(close.newCar);
-					} else {
-						return $q.reject('cancelled');
-					}
-				}).then(function (done) {
-					car.licence_plate = newCar.licence_plate;
-					car.model = newCar.model;
-					car.make = newCar.make;
-					car.make_id = newCar.make_id;
-					car.mileage = newCar.mileage;
-					car.year = newCar.year;
-					car.chassis_number = newCar.chassis_number;
-					car.description = newCar.description;
-					car.updated_at = newCar.updated_at;
-					car.body_type = newCar.body_type;
-					car.transmission = newCar.transmission;
-				}).catch(function(error) {
-					//car = oldCar;
-				});
+					.then(function (close) {
+						if (close.save && close.newCar) {
+							newCar = _.cloneDeep(close.newCar);
+							return CarsService.updateCar(close.newCar);
+						} else {
+							return $q.reject('cancelled');
+						}
+					})
+					.then(function (done) {
+						car.licence_plate = newCar.licence_plate;
+						car.model = newCar.model;
+						car.make = newCar.make;
+						car.make_id = newCar.make_id;
+						car.mileage = newCar.mileage;
+						car.year = newCar.year;
+						car.chassis_number = newCar.chassis_number;
+						car.description = newCar.description;
+						car.updated_at = newCar.updated_at;
+						car.body_type = newCar.body_type;
+						car.transmission = newCar.transmission;
+					})
+					.catch(function (error) {
+						//car = oldCar;
+					});
 			}
 		}
 

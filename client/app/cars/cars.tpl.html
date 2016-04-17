@@ -5,49 +5,47 @@
 </header>
 
 <div class="container">
-  <br /><br />
+  <br />
+  <br />
   <div class="row">
-      <div class="col-lg-2">
-        <select ng-model="carsCtrl.makes.selectedOption" ng-change="carsCtrl.changeMake($event)" class="home-dropdown">
-          <option ng-repeat="make in carsCtrl.makes.availableOptions" value="{{make.id}}">{{make.name}}</option>
-        </select>
+    <div class="col-lg-2">
+      <select ng-model="carsCtrl.makes.selectedOption" ng-change="carsCtrl.changeMake($event)" class="home-dropdown">
+        <option ng-repeat="make in carsCtrl.makes.availableOptions" value="{{make.id}}">{{make.name}}</option>
+      </select>
 
-        <select ng-model="carsCtrl.models.selectedOption" ng-change="carsCtrl.changeModel($event)" class="home-dropdown">
-          <option ng-repeat="model in carsCtrl.models.availableOptions" value="{{model.id}}">{{model.model}}</option>
-        </select>
+      <select ng-model="carsCtrl.models.selectedOption" ng-change="carsCtrl.changeModel($event)" class="home-dropdown">
+        <option ng-repeat="model in carsCtrl.models.availableOptions" value="{{model.id}}">{{model.model}}</option>
+      </select>
 
-        <button class="btn btn-primary" ng-click="carsCtrl.goSearch($event);">Search</button>
-      </div>
+      <button class="btn btn-primary" ng-click="carsCtrl.goSearch($event);">Search</button>
+    </div>
 
-      <div class="col-lg-10" ng-if="!carsCtrl.showList">
-        <h2>No vehicles found</h2>
-        <p>There no vehicles that match your search criteria.</p>
-      </div>
+    <div class="col-lg-10" ng-if="!carsCtrl.showList">
+      <h2>No vehicles found</h2>
+      <p>There no vehicles that match your search criteria.</p>
+    </div>
     <div class="col-lg-10" ng-if="carsCtrl.showList">
 
-        <div class="row car-row" id="row{{$index}}" ng-repeat="car in carsCtrl.cars">
-          <div class="col-lg-2 car-list-image">
-            <a ui-sref="car({car_id:car.id})">
-              <img ng-src="./images/default/ghostVehicleLarge.jpg">
-            </a>
-          </div>
-          <div class="col-lg-6">
-            <a ui-sref="car({car_id:car.id})"><h4>{{car.make.name}}&nbsp;{{car.model}}</h4></a>
-            <ul>
-              <li>{{car.body_type}}</li>
-              <li>{{car.milage}}</li>
-            </ul>
-          </div>
-          <div class="col-lg-2" style="margin: 10px">
-              <button class="btn btn-primary" ng-if="carsCtrl.can('car','post')" id="edit{{$index}}" ng-click="carsCtrl.carPicked($event, car.id)">Edit</button>
-              <input type="checkbox" >add to compare
-          </div>
+      <div class="row car-row" id="row{{$index}}" ng-repeat="car in carsCtrl.cars">
+        <div class="col-lg-2 car-list-image">
+          <a ui-sref="car({car_id:car.id})">
+            <jwt-thumbnail jwt-image="car.images[0]"></jwt-thumbnail>
+          </a>
         </div>
+        <div class="col-lg-6">
+          <a ui-sref="car({car_id:car.id})"><h4>{{car.make.name}}&nbsp;{{car.model}}</h4></a>
+          <ul>
+            <li>{{car.body_type}}</li>
+            <li>{{car.milage}}</li>
+          </ul>
+        </div>
+        <div class="col-lg-2" style="margin: 10px">
+          <button class="btn btn-primary" ng-if="carsCtrl.can('car','post')" id="edit{{$index}}" ng-click="carsCtrl.carPicked($event, car.id)">Edit</button>
+          <input type="checkbox">add to compare
+        </div>
+      </div>
 
-        <uib-pagination total-items="carsCtrl.totalCars" ng-model="carsCtrl.currentPage"
-        ng-change="carsCtrl.currentPageChanged()" max-size="carsCtrl.maxSize"
-        ng-show="carsCtrl.totalCars > carsCtrl.maxSize" class="pagination-sm"
-        boundary-link-numbers="true" rotate="true"></uib-pagination>
+      <uib-pagination total-items="carsCtrl.totalCars" ng-model="carsCtrl.currentPage" ng-change="carsCtrl.currentPageChanged()" max-size="carsCtrl.maxSize" ng-show="carsCtrl.totalCars > carsCtrl.maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="true"></uib-pagination>
     </div>
   </div>
 </div>

@@ -23,7 +23,8 @@
 			'services.upload',
 			'services.carsModal',
 			'services.commentsModal',
-			'jwt.uploader'
+			'jwt.uploader',
+			'jwt.Thumbnail'
 		])
 		/*@ngInject*/
 		.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
