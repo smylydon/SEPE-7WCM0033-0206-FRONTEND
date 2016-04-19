@@ -67,9 +67,10 @@
           };
 
           vm.save = function() {
+            console.log('car:', vm.car);
             modalInstance.dismiss('save');
             resolve({ save: true, newCar:vm.car});
-          }
+          };
         }
       });
 

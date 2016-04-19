@@ -94,6 +94,7 @@
 						}
 					})
 					.then(function (done) {
+						//jshint ignore:start
 						car.licence_plate = newCar.licence_plate;
 						car.model = newCar.model;
 						car.make = newCar.make;
@@ -105,6 +106,7 @@
 						car.updated_at = newCar.updated_at;
 						car.body_type = newCar.body_type;
 						car.transmission = newCar.transmission;
+						//jshint ignore:end
 					})
 					.catch(function (error) {
 						//car = oldCar;

@@ -43,7 +43,7 @@
 					element.off(dragEnter);
 					element.off(dragOver);
 					element.off(dragDrop);
-					element.off(dragLeave)
+					element.off(dragLeave);
 				}
 
 				element.on('dragenter', dragEnter);

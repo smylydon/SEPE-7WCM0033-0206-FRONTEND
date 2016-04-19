@@ -12,7 +12,7 @@
 
 		vm.uploadImages = function (files) {
 			uploadCallback(files);
-		}
+		};
 	}
 
 })(angular);

@@ -84,6 +84,7 @@
     }
 
     function updateCar(car) {
+      console.log('car:', car);
       if (car && car.id) {
         var callback = function() {
           Restangular.one('cars', car.id).customPUT(car)

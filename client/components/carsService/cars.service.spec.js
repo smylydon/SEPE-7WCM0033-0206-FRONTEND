@@ -1,58 +1,152 @@
 'use strict';
 
-describe('CarsService', function() {
-  var CarsService = null;
-  var $httpBackend = null;
+describe('CarsService', function () {
+	var CarsService = null;
+	var $httpBackend = null;
 
-  // load the controller's module
-  //beforeEach(module('jwtfrontendApp'));
-  beforeEach(module('services.cars'));
+	function setUp($rootScope, _$httpBackend_, _CarsService_) {
+		$httpBackend = _$httpBackend_;
+		CarsService = _CarsService_;
+		$httpBackend.whenGET(/components.*/)
+			.respond(200, '');
+		$httpBackend.whenGET(/app.*/)
+			.respond(200, '');
+	}
 
-  beforeEach(inject(function($rootScope, _$httpBackend_, _CarsService_) {
-    $httpBackend = _$httpBackend_;
-    CarsService = _CarsService_;
-    $httpBackend.whenGET(/components.*/).respond(200, '');
-    $httpBackend.whenGET(/app.*/).respond(200, '');
-  }));
+	function cleanUp() {
+		$httpBackend.flush();
+		$httpBackend.verifyNoOutstandingExpectation();
+		$httpBackend.verifyNoOutstandingRequest();
+	}
 
-  afterEach(function() {
-    $httpBackend.verifyNoOutstandingExpectation();
-    $httpBackend.verifyNoOutstandingRequest();
-  });
+	describe('CarsService:getCars', function () {
+		// load the controller's module
+		beforeEach(module('services.cars'));
+		beforeEach(inject(setUp));
+		afterEach(cleanUp);
 
-  it('should be possible to get a list of vehicles.', function(done) {
+		it('should be possible to get a list of vehicles.', function (done) {
+			$httpBackend.when('GET', '/cars')
+				.respond(200, {
+					success: true,
+					message: 'success'
+				});
 
-    $httpBackend.when('GET', '/cars')
-      .respond(200, {
-        success: true,
-        message: ''
-      });
+			CarsService.getCars()
+				.then(function (success) {
+					expect(success.success)
+						.toBe(true);
+					expect(success.message)
+						.toBe('success');
+				})
+				.catch(function (error) {
+					fail('Catch should not be called');
+				})
+				.finally(done)
+		});
 
-    CarsService.getCars(1)
-      .then(function(success) {
-        expect(success.success).toBe(true);
-        expect(success.message).toBe('');
-      }).catch(function(error) {
-        expect(error).toBeUndefined();
-      }).finally(done)
-    $httpBackend.flush();
-  });
+		it('should catch errors from the backend.', function (done) {
+			$httpBackend.when('GET', '/cars')
+				.respond(200, {
+					success: false,
+					message: 'error'
+				});
 
-  it('should be possible to get one vehicle.', function(done) {
+			CarsService.getCars()
+				.then(function (success) {
+					expect(success.success)
+						.toBe(false);
+					expect(success.message)
+						.toBe('error');
+				})
+				.catch(function (error) {
+					fail('Catch should not be called');
+				})
+				.finally(done)
+		});
 
-    $httpBackend.when('GET', '/cars/1')
-      .respond(200, {
-        success: true,
-        message: ''
-      });
+		it('should catch server errors.', function (done) {
+			$httpBackend.when('GET', '/cars')
+				.respond(404, {
+					success: false,
+					message: 'error'
+				});
 
-    CarsService.getACar(1)
-      .then(function(success) {
-        expect(success.success).toBe(true);
-        expect(success.message).toBe('');
-      }).catch(function(error) {
-        expect(error).toBeUndefined();
-      }).finally(done)
-    $httpBackend.flush();
-  });
+			CarsService.getCars()
+				.then(function (success) {
+					fail('Success should not be called');
+				})
+				.catch(function (error) {
+					expect(error)
+						.toBeDefined();
+				})
+				.finally(done)
+		});
+	});
+
+	describe('CarsService:getACar', function () {
+		// load the controller's module
+		beforeEach(module('services.cars'));
+		beforeEach(inject(setUp));
+		afterEach(cleanUp);
+
+		it('should be possible to get one vehicle.', function (done) {
+			$httpBackend.when('GET', '/cars/1')
+				.respond(200, {
+					success: true,
+					message: 'success'
+				});
+
+			CarsService.getACar(1)
+				.then(function (success) {
+					expect(success.success)
+						.toBe(true);
+					expect(success.message)
+						.toBe('success');
+				})
+				.catch(function (error) {
+					fail('Catch should not be called');
+				})
+				.finally(done)
+		});
+
+		it('should catch errors from the backend.', function (done) {
+			$httpBackend.when('GET', '/cars/1')
+				.respond(200, {
+					success: false,
+					message: 'error'
+				});
+
+			CarsService.getACar(1)
+				.then(function (success) {
+					expect(success.success)
+						.toBe(false);
+					expect(success.message)
+						.toBe('error');
+				})
+				.catch(function (error) {
+					fail('Catch should not be called');
+				})
+				.finally(done)
+		});
+
+		it('should catch server errors.', function (done) {
+			$httpBackend.when('GET', '/cars/1')
+				.respond(400, {
+					success: false,
+					message: 'error'
+				});
+
+			CarsService.getACar(1)
+				.then(function (success) {
+					fail('Success should not be called');
+				})
+				.catch(function (error) {
+					expect(error)
+						.toBeDefined();
+				})
+				.finally(done)
+		});
+	});
+
 });

@@ -7,7 +7,7 @@
 	function AuthorizationService(AclService, localStorageService) {
 		var external = {
 			authorize: authorize
-		}
+		};
 
 		function authorize() {
 			AclService.addRole('guest');
