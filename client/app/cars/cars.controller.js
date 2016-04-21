@@ -59,9 +59,10 @@
 
 			CarsService.getCars(setter)
 				.then(function (cars) {
-					vm.cars = cars;
+					vm.cars = [];
 					vm.showList = false;
-					if (cars && cars.rows.length > 0) {
+					vm.totalCars = 0;
+					if (cars && _.isArray(cars.rows) && cars.rows.length > 0) {
 						vm.cars = cars.rows;
 						vm.totalCars = cars.count;
 						vm.showList = true;
@@ -76,7 +77,9 @@
 						});
 					}
 				}, function (error) {
+					vm.cars = [];
 					vm.showList = false;
+					vm.totalCars = 0;
 				});
 		}
 

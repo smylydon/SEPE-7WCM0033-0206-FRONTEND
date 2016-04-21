@@ -57,6 +57,8 @@ module.exports = function (config) {
 		// list of files / patterns to exclude
 		exclude: [],
 
+		reporters : ['spec'],
+
 		// web server port
 		port: 8080,
 
