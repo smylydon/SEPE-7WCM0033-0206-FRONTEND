@@ -4,7 +4,7 @@
 	app.module('jwtfrontendApp')
 		.controller('PeopleCtrl', PeopleCtrl);
 
-	function PeopleCtrl($scope, $state, PeopleService) {
+	function PeopleCtrl($scope, $state, PeopleModalService, PeopleService) {
 		var vm = this;
 
 		vm.people = [];
@@ -23,10 +23,8 @@
 						vm.totalPeople = people.count;
 						vm.showList = true;
 					}
-					console.log('people:', people);
 				}, function (error) {
 					vm.showList = false;
-					console.log(error);
 				});
 		}
 
@@ -34,10 +32,10 @@
 			var person = _.find(vm.people, {
 				id: personId
 			});
-			/*
+
 			if (person) {
-			  CommentsModalService.showModal(comment);
-			}*/
+			  PeopleModalService.showModal(person);
+			}
 		};
 
 		getPeople();

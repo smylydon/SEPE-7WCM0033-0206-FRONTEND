@@ -23,6 +23,7 @@
 			'services.upload',
 			'services.carsModal',
 			'services.commentsModal',
+			'services.peopleModal',
 			'jwt.uploader',
 			'jwt.Thumbnail'
 		])

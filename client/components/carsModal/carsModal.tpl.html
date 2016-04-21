@@ -37,7 +37,7 @@
         </div>
       </ng-form>
     </uib-tab>
-    <uib-tab index="2" heading="Upload">
+    <uib-tab index="2" heading="Upload"  ng-show="carsModalCtrl.can('car','uploadpix')">
       <div style="height:282px;width:550px">
           <jwt-uploader jwt-callback="carsModalCtrl.uploadFiles"></jwt-uploader>
       </div>

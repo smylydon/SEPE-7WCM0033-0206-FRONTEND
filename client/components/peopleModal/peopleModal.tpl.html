@@ -1,0 +1,53 @@
+<div class="modal-header">
+  <h3 class="modal-title">Cars R Us</h3>
+</div>
+<div class="modal-body commentsModal">
+  <form name="outerForm" class="tab-form-demo">
+  <uib-tabset active="activeForm">
+    <uib-tab index="0" heading="Info">
+      <ng-form name="nestedForm">
+        <div class="form-group">
+            <label for="authorizationLevel">Authorization Level</label>
+            <input id="authorizationLevel" type="text" class="form-control"
+            ng-minlength="2" ng-model="peopleModalCtrl.person.authorization"
+            placeholder="1" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" class="form-control"
+            ng-minlength="2" ng-model="peopleModalCtrl.person.firstname"
+            placeholder="Mary" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="middleNames">Middle Name(s)</label>
+            <input id="middleNames" ng-email type="text"
+             ng-model="peopleModalCtrl.car.middlenames"
+            class="form-control" placeholder="Jane Elizabeth" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" ng-email type="text"
+             ng-model="peopleModalCtrl.car.lastname"
+            class="form-control" placeholder="Smith" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input id="gender" type="text" class="form-control" placeholder="f"
+            ng-minlength="2" ng-model="peopleModalCtrl.car.sex" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="dateOfBirth">D.O.B.</label>
+            <input id="dateOfBirth" type="text" class="form-control" placeholder="1985/01/01"
+            ng-minlength="2" ng-model="peopleModalCtrl.car.dob" ng-required="true">
+        </div>
+      </ng-form>
+    </uib-tab>
+
+  </uib-tabset>
+</form>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="peopleModalCtrl.cancel()">Dismiss</button>
+  <button class="btn btn-danger" ng-click="peopleModalCtrl.save()">{{peopleModalCtrl.label}}</button>
+</div>

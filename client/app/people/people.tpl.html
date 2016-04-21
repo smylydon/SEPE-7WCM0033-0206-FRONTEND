@@ -25,9 +25,13 @@
             <li><h6>{{person.middlenames}}</h5></lid>
             <li><h6>{{person.lastname}}</h6></li>
             <li><h5>{{person.dob}}<h5></li>
+            <li>
+              <button class="btn btn-primary" id="edit{{$index}}" ng-click="peopleCtrl.personPicked($event, person.id)">Edit</button>
+            </li>
           </ul>
         </a>
         </div>
+
         <uib-pagination total-items="peopleCtrl.totalPeople" ng-model="peopleCtrl.currentPage"
         ng-change="peopleCtrl.currentPageChanged()" max-size="peopleCtrl.maxSize"
         ng-show="peopleCtrl.totalPeople > peopleCtrl.maxSize" class="pagination-sm"
