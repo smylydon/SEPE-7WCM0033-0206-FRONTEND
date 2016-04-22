@@ -7,9 +7,13 @@
 	/*@ngInject*/
 	function CarsCtrl($scope, $state, $q, AclService, CarsModalService, CarsService) {
 		var vm = this;
-		var dummy = {
-			selectedOption: null,
-			availableOptions: []
+		vm.currentMake = {
+			id: 0,
+			name: 'All Makes'
+		};
+		vm.currentModel = {
+			id: 0,
+			name: 'All Models'
 		};
 		vm.can = AclService.can;
 		vm.cars = [];
@@ -17,30 +21,95 @@
 		vm.maxSize = 10;
 		vm.currentPage = 1;
 		vm.totalCars = 0;
-		vm.makes = _.clone(dummy);
-		vm.models = _.clone(dummy);
+		vm.makes = null;
+		vm.models = null;
+		vm.makesStatus = {
+			isopen: false,
+			disabled: false,
+		};
+		vm.modelsStatus = {
+			isopen: false,
+			disabled: true
+		};
+		vm.makesDisabled = function () {
+			return vm.makesStatus.disabled;
+		};
+		vm.modelsDisabled = function () {
+			return vm.modelsStatus.disabled;
+		};
 
 		function getMakes() {
+			vm.makesStatus.disabled = true;
+			vm.modelsStatus.disabled = true;
 			CarsService.getMakes()
 				.then(function (makes) {
-					vm.makes.availableOptions = makes;
+					vm.makes = [{
+						id: 0,
+						name: 'All Makes'
+					}];
+					vm.makes = vm.makes.concat(_.clone(makes));
 					getCars();
 				})
 				.catch(function (error) {
 					console.log(error);
 					getCars();
+				})
+				.finally(function () {
+					vm.makesStatus.disabled = false;
 				});
 		}
 
-		vm.changeMake = function ($event) {
-			var makesId = vm.makes.selectedOption;
-			CarsService.getModels(makesId)
-				.then(function (models) {
-					vm.models.availableOptions = _.uniq(models, 'model');
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
+		vm.changeMake = function ($event, makeId) {
+			$event.preventDefault();
+			var make = _.find(vm.makes, {
+				id: makeId
+			});
+			if (make) {
+				vm.makesStatus.disabled = true;
+				vm.modelsStatus.disabled = true;
+				vm.currentMake = make;
+				CarsService.getModels(makeId)
+					.then(function (models) {
+						console.log('models:', models.length);
+						vm.models = [{
+							id: 0,
+							name: 'All Models'
+						}];
+						if (models.length > 0) {
+							var temp = _.sortBy(_.uniq(_.clone(models), 'model'),'model');
+							vm.models = vm.models.concat(temp);
+							vm.modelsStatus.disabled = false;
+						}
+					})
+					.catch(function (error) {
+						console.log(error);
+						vm.modelsStatus.disabled = true;
+					})
+					.finally(function () {
+						vm.makesStatus.disabled = false;
+					});
+			}
+		};
+
+		vm.changeModel = function ($event, modelId) {
+			$event.stopPropagation();
+			var model = _.find(vm.models, {
+				id: modelId
+			});
+			if (model) {
+				vm.currentModel = model;
+				/*	CarsService.getModels(makeId)
+						.then(function (models) {
+							vm.models = [{
+								id: 0,
+								name: 'All Models'
+							}];
+							vm.models = vm.models.concat(_.uniq(_.clone(models), 'models'));
+						})
+						.catch(function (error) {
+							console.log(error);
+						});*/
+			}
 		};
 
 		vm.currentPageChanged = function () {

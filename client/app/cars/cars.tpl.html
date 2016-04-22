@@ -9,14 +9,28 @@
   <br />
   <div class="row">
     <div class="col-lg-2">
-      <select ng-model="carsCtrl.makes.selectedOption" ng-change="carsCtrl.changeMake($event)" class="home-dropdown">
-        <option ng-repeat="make in carsCtrl.makes.availableOptions" value="{{make.id}}">{{make.name}}</option>
-      </select>
 
-      <select ng-model="carsCtrl.models.selectedOption" ng-change="carsCtrl.changeModel($event)" class="home-dropdown">
-        <option ng-repeat="model in carsCtrl.models.availableOptions" value="{{model.id}}">{{model.model}}</option>
-      </select>
+      <div class="btn-group" style="width:100%;" uib-dropdown is-open="carsCtrl.makesStatus.isopen">
+        <button id="single-button" type="button" class="btn btn-default" style="width:100%;" uib-dropdown-toggle
+        ng-disabled="carsCtrl.makesDisabled()">
+        {{carsCtrl.currentMake.name}}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem" ng-repeat="make in carsCtrl.makes" ng-click="carsCtrl.changeMake($event,make.id)"> <a href="#">{{make.name}}</a></li>
+        </ul>
+      </div>
+      <br /><br />
 
+      <div class="btn-group" style="width:100%;" uib-dropdown is-open="carsCtrl.modelsStatus.isopen">
+        <button id="single-button" type="button" class="btn btn-default" style="width:100%;" uib-dropdown-toggle
+         ng-disabled="carsCtrl.modelsDisabled()">
+          {{carsCtrl.currentModel.name}}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem" ng-repeat="model in carsCtrl.models" ng-click="carsCtrl.changeMake($event,make.id)"><a href="#">{{model.model}}</a></li>
+        </ul>
+      </div>
+      <br /><br />
       <button class="btn btn-primary" ng-click="carsCtrl.goSearch($event);">Search</button>
     </div>
 

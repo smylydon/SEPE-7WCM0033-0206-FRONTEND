@@ -9,7 +9,7 @@
       </button>
       <a ui-sref="home" class="navbar-brand">Car-R-Us</a>
     </div>
-    <div collapse="navbarCtrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+    <div uib-collapse="navbarCtrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
         <li ng-repeat="item in navbarCtrl.menu" ng-class="{active: navbarCtrl.isActive(item.state)}">
             <a ui-sref="{{item.state}}">{{item.title}}</a>

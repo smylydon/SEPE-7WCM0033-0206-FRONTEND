@@ -31,11 +31,11 @@
 		vm.isActive = function (route) {
 			return route === $state.current.name;
 		};
+
 		$scope.$watch(function () {
 			return LoginService.isLoggedIn();
 		}, function (newVal, oldVal) {
 			if (newVal) {
-				console.log('newVal:', newVal);
 				vm.menu = customerMenu.concat(staffMenu);
 			}
 		});
