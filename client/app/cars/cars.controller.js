@@ -13,7 +13,7 @@
 		};
 		vm.currentModel = {
 			id: 0,
-			name: 'All Models'
+			model: 'All Models'
 		};
 		vm.can = AclService.can;
 		vm.cars = [];
@@ -51,7 +51,6 @@
 					getCars();
 				})
 				.catch(function (error) {
-					console.log(error);
 					getCars();
 				})
 				.finally(function () {
@@ -64,25 +63,27 @@
 			var make = _.find(vm.makes, {
 				id: makeId
 			});
+
 			if (make) {
 				vm.makesStatus.disabled = true;
 				vm.modelsStatus.disabled = true;
 				vm.currentMake = make;
+				vm.currentPage = 0;
 				CarsService.getModels(makeId)
 					.then(function (models) {
-						console.log('models:', models.length);
 						vm.models = [{
 							id: 0,
-							name: 'All Models'
+							model: 'All Models'
 						}];
 						if (models.length > 0) {
-							var temp = _.sortBy(_.uniq(_.clone(models), 'model'),'model');
+							var temp = _.sortBy(_.uniq(_.clone(models), 'model'), 'model');
 							vm.models = vm.models.concat(temp);
 							vm.modelsStatus.disabled = false;
 						}
+						vm.currentModel = vm.models[0];
+						getCars();
 					})
 					.catch(function (error) {
-						console.log(error);
 						vm.modelsStatus.disabled = true;
 					})
 					.finally(function () {
@@ -92,23 +93,15 @@
 		};
 
 		vm.changeModel = function ($event, modelId) {
-			$event.stopPropagation();
+			$event.preventDefault();
 			var model = _.find(vm.models, {
 				id: modelId
 			});
+
 			if (model) {
 				vm.currentModel = model;
-				/*	CarsService.getModels(makeId)
-						.then(function (models) {
-							vm.models = [{
-								id: 0,
-								name: 'All Models'
-							}];
-							vm.models = vm.models.concat(_.uniq(_.clone(models), 'models'));
-						})
-						.catch(function (error) {
-							console.log(error);
-						});*/
+				vm.currentPage = 0;
+				getCars();
 			}
 		};
 
@@ -122,9 +115,16 @@
 		};
 
 		function getCars(page) {
+			var model = vm.currentModel;
 			var setter = {
-				offset: page || 0
+				offset: page || vm.currentPage || 0,
+				makeId: vm.currentMake.id,
 			};
+
+			if (model.id !== 0 && _.trim(model.model)
+				.length > 0) {
+				setter.model = _.trim(model.model);
+			}
 
 			CarsService.getCars(setter)
 				.then(function (cars) {

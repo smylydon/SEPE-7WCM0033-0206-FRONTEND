@@ -39,6 +39,7 @@
 
     function getCars(setter) {
       setter = setter || {};
+
       var callback = function() {
         Restangular.one('cars')
           .get(setter)
@@ -84,7 +85,6 @@
     }
 
     function updateCar(car) {
-      console.log('car:', car);
       if (car && car.id) {
         var callback = function() {
           Restangular.one('cars', car.id).customPUT(car)

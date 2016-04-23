@@ -24,10 +24,10 @@
       <div class="btn-group" style="width:100%;" uib-dropdown is-open="carsCtrl.modelsStatus.isopen">
         <button id="single-button" type="button" class="btn btn-default" style="width:100%;" uib-dropdown-toggle
          ng-disabled="carsCtrl.modelsDisabled()">
-          {{carsCtrl.currentModel.name}}<span class="caret"></span>
+          {{carsCtrl.currentModel.model}}<span class="caret"></span>
         </button>
         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-          <li role="menuitem" ng-repeat="model in carsCtrl.models" ng-click="carsCtrl.changeMake($event,make.id)"><a href="#">{{model.model}}</a></li>
+          <li role="menuitem" ng-repeat="model in carsCtrl.models" ng-click="carsCtrl.changeModel($event,model.id)"><a href="#">{{model.model}}</a></li>
         </ul>
       </div>
       <br /><br />
