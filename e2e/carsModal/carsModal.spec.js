@@ -9,7 +9,7 @@ describe('CarsModal', function() {
     browser.get('/cars/');
     carsModal = require('./carsModal.po');
   });
-
+/*
   xit('should be possible to open modal', function() {
     expect(carsModal.row1.isPresent()).toBe(true);
     console.log('editBtn:', carsModal.editBtn);
@@ -17,5 +17,5 @@ describe('CarsModal', function() {
       expect(element(by.css('.modal-content')).isPresent()).toBe(true);
     });
   });
-
+*/
 });

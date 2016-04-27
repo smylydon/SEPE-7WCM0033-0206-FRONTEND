@@ -107,6 +107,7 @@
 
 		vm.currentPageChanged = function () {
 			var page = Math.max((vm.currentPage) - 1, 0);
+
 			getCars(page);
 		};
 
@@ -115,14 +116,15 @@
 		};
 
 		function getCars(page) {
+			page = _.isUndefined(page) ? (vm.currentPage || 0 ): page;
+			page = _.isFinite(page) ? page: 0;
 			var model = vm.currentModel;
 			var setter = {
-				offset: page || vm.currentPage || 0,
+				offset: page ,
 				makeId: vm.currentMake.id,
 			};
 
-			if (model.id !== 0 && _.trim(model.model)
-				.length > 0) {
+			if (model.id !== 0 && _.trim(model.model).length > 0) {
 				setter.model = _.trim(model.model);
 			}
 

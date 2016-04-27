@@ -30,10 +30,14 @@ exports.config = {
   // https://code.google.com/p/selenium/wiki/DesiredCapabilities
   // and
   // https://code.google.com/p/selenium/source/browse/javascript/webdriver/capabilities.js
-  capabilities: {
+  //capabilities: {
+    //'browserName': 'firefox'
+  //},
+  multiCapabilities: [{
+    'browserName': 'firefox'
+  }, {
     'browserName': 'chrome'
-  },
-
+  }],
   // ----- The test framework -----
   //
   // Jasmine and Cucumber are fully supported as a test and assertion framework.
